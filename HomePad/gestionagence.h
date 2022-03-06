@@ -7,7 +7,6 @@
 class GestionAgence
 { QString nomAgence,ville,adresseA ,numtelA;
     int numAgence;
-
 public: //constructeur
     GestionAgence(){};
     GestionAgence(QString,QString,QString,QString,int);
@@ -29,6 +28,10 @@ public: //constructeur
             bool supprimer(int);
             QSqlQueryModel * afficher();
              bool Modifier(int,QString,QString,QString,QString);
+             QSqlQueryModel * comboBoxAgence();
+             QSqlQueryModel * testexist(QString);
+             QSqlQueryModel * recherche(QString r);
+             QSqlQueryModel * trier(QString r);
 
 };
 

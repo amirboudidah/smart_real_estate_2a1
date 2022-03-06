@@ -1,6 +1,7 @@
 #ifndef NEWWINDOW_H
 #define NEWWINDOW_H
 #include "gestionagence.h"
+#include "modifieragence.h"
 
 #include <QMainWindow>
 #include <QListWidgetItem>
@@ -41,9 +42,19 @@ private slots:
 
     void on_lineEdit_26_textEdited(const QString &arg1);
 
+    void on_lineEdit_8_textEdited(const QString &arg1);
+
+    void on_pushButton_3_clicked();
+
+    void on_lineEdit_textEdited(const QString &arg1);
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
 private:
     Ui::newWindow *ui;
     GestionAgence G;
+    modifieragence *M;
+
 };
 
 #endif // NEWWINDOW_H

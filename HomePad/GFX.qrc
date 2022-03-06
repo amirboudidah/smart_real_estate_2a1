@@ -3,5 +3,7 @@
         <file>logo.ico</file>
         <file>buildings.jpg</file>
         <file>blankprofile.png</file>
+        <file>refresh.png</file>
+        <file>search.png</file>
     </qresource>
 </RCC>

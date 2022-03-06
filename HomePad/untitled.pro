@@ -21,16 +21,19 @@ SOURCES += \
     gestionagence.cpp \
     main.cpp \
     mainwindow.cpp \
+    modifieragence.cpp \
     newwindow.cpp
 
 HEADERS += \
     connection.h \
     gestionagence.h \
     mainwindow.h \
+    modifieragence.h \
     newwindow.h
 
 FORMS += \
     mainwindow.ui \
+    modifieragence.ui \
     newwindow.ui
 
 RC_ICONS = logo.ico
