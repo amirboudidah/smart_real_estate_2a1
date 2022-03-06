@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     //open qss file
-    QFile file("C:\\Users\\amirb\\Desktop\\9raya\\brouillon atelier QT\\main\\interfaces\\HomePad\\SpyBot.qss");
+    QFile file("C:\\Users\\amirb\\Desktop\\GitHub\\HomePad\\SpyBot.qss");
     file.open(QFile::ReadOnly);
 
     QString styleSheet { QLatin1String(file.readAll()) };

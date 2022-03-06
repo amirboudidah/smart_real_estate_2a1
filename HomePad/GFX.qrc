@@ -4,5 +4,8 @@
         <file>buildings.jpg</file>
         <file>blankprofile.png</file>
         <file>search.png</file>
+        <file>refresh.png</file>
+        <file>plus.png</file>
+        <file>minus.png</file>
     </qresource>
 </RCC>

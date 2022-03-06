@@ -17,10 +17,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-//    Dialog dialog;
-//    dialog.setModal(true);
-//    dialog.exec();
-//    this->close();
     newwindow=new newWindow(this);
     newwindow->show();
     MainWindow::hide();

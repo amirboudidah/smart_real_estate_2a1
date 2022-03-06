@@ -35,7 +35,11 @@ public:
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
+    bool Modifier(int numContrat,QString typec,QString contenu,QString imageqr,QString datec,int cin);
     QSqlQueryModel * recherche(QString ch);
+    QSqlQueryModel * trier(QString type);
+    QSqlQueryModel * comboboxcontrat();
+    QSqlQueryModel * testexist(QString ch);
 };
 
 #endif // GESTIONCONTRATS_H

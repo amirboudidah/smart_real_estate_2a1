@@ -19,7 +19,6 @@ bool gestioncontrats::ajouter()
     QString res1= QString::number(CIN);
 
     QDate da = QDate::fromString(datec,"dd/MM/yyyy");
-        qDebug() << res << res1 << typec << contenu << imageqr << da << datec;
     query.prepare("insert into contrats (numcontrat,CIN,typeC,contenu,imageqr,datec) values (:numcontrat,:CIN,:typec,:contenu,:imageqr,:datec)");
 
     query.bindValue(":numcontrat",res);
@@ -56,12 +55,43 @@ bool gestioncontrats::supprimer(int numcontrat)
     return query.exec();
 }
 
+bool gestioncontrats::Modifier(int numContrat,QString typec,QString contenu,QString imageqr,QString datec,int cin)
+{
+    QSqlQuery query;
+
+    QDate da = QDate::fromString(datec,"dd/MM/yyyy");
+    query.prepare("update contrats set CIN=:CIN,typeC=:typec,contenu=:contenu,imageqr=:imageqr,datec=:datec where numcontrat=:numcontrat");
+
+    query.bindValue(":numcontrat",numContrat);
+    query.bindValue(":CIN",cin);
+    query.bindValue(":typec",typec);
+    query.bindValue(":contenu",contenu);
+    query.bindValue(":imageqr",imageqr);
+    query.bindValue(":datec",da);
+
+    return query.exec();
+
+}
+
 QSqlQueryModel * gestioncontrats::recherche(QString ch)
 {
     QSqlQueryModel * model=new QSqlQueryModel();
     QSqlQuery query;
     model->setQuery(("select * from contrats where cast(numcontrat as varchar(20)) like('"+ch+"%') or cast(CIN as varchar(20)) like('"+ch+"%') or typec like('"+ch+"%') or cast(datec as varchar(20)) like('"+ch+"%')"));
-    qDebug() << model;
+    return model;
+}
+
+QSqlQueryModel * gestioncontrats::trier(QString type)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    if(type=="datec")
+    {
+        model->setQuery("select * from contrats order by "+type+" DESC");
+    }
+    else
+    {
+        model->setQuery("select * from contrats order by "+type);
+    }
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("numContrat"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("contenu"));
@@ -71,3 +101,20 @@ QSqlQueryModel * gestioncontrats::recherche(QString ch)
 
     return model;
 }
+
+QSqlQueryModel * gestioncontrats::comboboxcontrat()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("select numContrat from contrats");
+    return model;
+}
+
+QSqlQueryModel * gestioncontrats::testexist(QString numcontrat)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+    model->setQuery("select * from contrats where cast(numcontrat as varchar(20))="+numcontrat);
+    return model;
+}
+
+

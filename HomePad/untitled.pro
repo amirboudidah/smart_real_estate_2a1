@@ -18,19 +18,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    contenu.cpp \
     gestioncontrats.cpp \
     main.cpp \
     mainwindow.cpp \
+    modifiercontrat.cpp \
     newwindow.cpp
 
 HEADERS += \
     connection.h \
+    contenu.h \
     gestioncontrats.h \
     mainwindow.h \
+    modifiercontrat.h \
     newwindow.h
 
 FORMS += \
+    contenu.ui \
     mainwindow.ui \
+    modifiercontrat.ui \
     newwindow.ui
 
 RC_ICONS = logo.ico
