@@ -13,13 +13,15 @@ class modifiercontrat : public QDialog
 
 public:
     explicit modifiercontrat(QWidget *parent = nullptr);
-    void setconrat(gestioncontrats c);
+    void setcontrat(gestioncontrats c);
     ~modifiercontrat();
 
 private slots:
     void on_pushButton_27_clicked();
     void on_lineEdit_11_textEdited(const QString &str);
     void on_lineEdit_12_textEdited(const QString &str);
+
+    void on_pushButton_28_clicked();
 
 private:
     Ui::modifiercontrat *ui;

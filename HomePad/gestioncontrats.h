@@ -40,6 +40,7 @@ public:
     QSqlQueryModel * trier(QString type);
     QSqlQueryModel * comboboxcontrat();
     QSqlQueryModel * testexist(QString ch);
+    void writePdf(QString num);
 };
 
 #endif // GESTIONCONTRATS_H

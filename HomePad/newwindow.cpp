@@ -10,6 +10,8 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
+#include <QPdfWriter>
+
 
 newWindow::newWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -93,7 +95,7 @@ void newWindow::on_pushButton_27_clicked()
         typec="achat";
     else
         typec="vendre";
-    QString imageqr="..\\HomePad";
+    QString imageqr="C:/Users/amirb/Desktop/GitHub/HomePad/refresh.png";
     QString datec=ui->dateEdit_3->date().toString("dd/MM/yyyy");
     gestioncontrats c(numcontrat,cin,typec,contenu,imageqr,datec);
     int flag0=0;
@@ -198,6 +200,12 @@ void newWindow::on_pushButton_27_clicked()
 
 void newWindow::on_pushButton_30_clicked()
 {
+    if(ui->comboBox->count()==0)
+    {
+        QMessageBox::warning(this,"WARNING","Rien a supprimer!");
+    }
+    else
+    {
     int numcontrat=ui->comboBox->currentText().toInt();
     bool test=cont.supprimer(numcontrat);
     ui->tableView->setModel(cont.afficher());
@@ -209,12 +217,7 @@ void newWindow::on_pushButton_30_clicked()
         else
             QMessageBox::warning(this,"suppresion NON effectue","click cancel to exit.");
 
-
-}
-
-void newWindow::on_lineEdit_10_cursorPositionChanged(int arg1, int arg2)
-{
-            ui->tableView->setModel(cont.recherche(ui->lineEdit_10->text()));
+    }
 }
 
 void newWindow::on_lineEdit_11_textEdited(const QString &str)
@@ -262,11 +265,17 @@ void newWindow::on_lineEdit_12_textEdited(const QString &str)
 void newWindow::on_pushButton_29_clicked()
 {
     gestioncontrats c;
+    if(ui->comboBox->currentText().count()==0)
+    {
+        QMessageBox::warning(this,"Warning","Rien a modifier!");
+    }
+    else
+    {
     c.setNumcontrat(ui->comboBox->currentText().toInt());
     mod= new modifiercontrat(this);
-    mod->setconrat(c);
+    mod->setcontrat(c);
     mod->show();
-
+    }
 }
 
 void newWindow::on_pushButton_19_clicked()
@@ -312,7 +321,7 @@ void newWindow::on_pushButton_28_clicked()
 {
     QString filename=QFileDialog::getOpenFileName(this,
                                                  tr("open file"),
-                                                 "c://",
+                                                 "C:/",
                                                  "All files(*.*);;Text File (*.txt);;Music file(*.mp3)"
                                                  );
     QFile file(filename);
@@ -323,9 +332,50 @@ void newWindow::on_pushButton_28_clicked()
 
 void newWindow::on_pushButton_17_clicked()
 {
+    if(ui->comboBox->count()==0)
+    {
+        QMessageBox::warning(this,"WARNING","Rien a voir!");
+    }
+    else
+    {
     gestioncontrats c;
     c.setNumcontrat(ui->comboBox->currentText().toInt());
     content= new contenu(this);
     content->setconrat(c);
     content->show();
+    }
+}
+
+void newWindow::on_pushButton_2_clicked()
+{
+
+}
+
+void newWindow::on_pushButton_16_clicked()
+{
+    if(ui->comboBox->count()==0)
+    {
+        QMessageBox::warning(this,"WARNING","Rien a exporter!");
+    }
+    else
+    {
+    gestioncontrats c;
+    c.writePdf(ui->comboBox->currentText());
+    }
+}
+
+void newWindow::on_pushButton_26_clicked()
+{
+    ui->lineEdit_11->clear();
+    ui->lineEdit_12->clear();
+    ui->textEdit_4->clear();
+    ui->radioButton_5->setAutoExclusive(false);
+    ui->radioButton_5->setChecked(false);
+    ui->radioButton_5->setAutoExclusive(true);
+    ui->dateEdit_3->clear();
+}
+
+void newWindow::on_lineEdit_10_textEdited(const QString &arg1)
+{
+    ui->tableView->setModel(cont.recherche(ui->lineEdit_10->text()));
 }

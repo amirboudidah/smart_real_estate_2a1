@@ -22,16 +22,11 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
-
-
-
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
     void on_pushButton_27_clicked();
 
     void on_pushButton_30_clicked();
-
-    void on_lineEdit_10_cursorPositionChanged(int arg1, int arg2);
 
     void on_lineEdit_11_textEdited(const QString &arg1);
 
@@ -46,6 +41,12 @@ private slots:
     void on_pushButton_28_clicked();
 
     void on_pushButton_17_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_26_clicked();
+
+    void on_lineEdit_10_textEdited(const QString &arg1);
 
 private:
     Ui::newWindow *ui;

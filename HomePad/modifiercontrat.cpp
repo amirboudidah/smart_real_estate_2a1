@@ -5,6 +5,10 @@
 #include <QSqlRecord>
 #include <QtDebug>
 #include <QModelIndex>
+#include <QFile>
+#include <QTextStream>
+#include <QDesktopServices>
+#include <QFileDialog>
 
 modifiercontrat::modifiercontrat(QWidget *parent) :
     QDialog(parent),
@@ -18,7 +22,7 @@ modifiercontrat::~modifiercontrat()
     delete ui;
 }
 
-void modifiercontrat::setconrat(gestioncontrats c)
+void modifiercontrat::setcontrat(gestioncontrats c)
 {
     QString s = QString::number(c.getNumcontrat());
     ui->lineEdit_11->setDisabled(true);
@@ -175,4 +179,17 @@ void modifiercontrat::on_lineEdit_12_textEdited(const QString &str)
             break;
         }
     }
+}
+
+void modifiercontrat::on_pushButton_28_clicked()
+{
+    QString filename=QFileDialog::getOpenFileName(this,
+                                                 tr("open file"),
+                                                 "c://",
+                                                 "All files(*.*);;Text File (*.txt);;Music file(*.mp3)"
+                                                 );
+    QFile file(filename);
+    file.open(QFile::ReadOnly);
+    QTextStream in(&file);
+    ui->textEdit_4->setText(in.readAll());
 }
