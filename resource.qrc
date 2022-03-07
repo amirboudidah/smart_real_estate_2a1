@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>2.1.png</file>
+        <file>Nouveau dossier/2.1.png</file>
+    </qresource>
+</RCC>

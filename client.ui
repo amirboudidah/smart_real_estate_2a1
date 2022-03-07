@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>client</class>
+ <widget class="QDialog" name="client">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>569</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>gestion clients</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>501</width>
+     <height>371</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>ajouter client</string>
+    </attribute>
+    <widget class="QLabel" name="nom">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nom</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="prenom">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Prenom</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cin">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cin</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="email">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>120</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tel">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Numero telephone</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="type">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>type</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>60</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>90</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_4">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>120</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_5">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>150</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>234</x>
+       <y>260</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ajouter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>260</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Quitter</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>180</y>
+       <width>83</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>acheteur</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>210</y>
+       <width>83</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>vendeur</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>240</y>
+       <width>101</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Nouveau dossier/2.1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>afficher client</string>
+    </attribute>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>250</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Supprimer</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>70</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Prenom</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_7">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>40</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>250</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modifier</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_12">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>130</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>100</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nom</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_9">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>100</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>40</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cin</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>190</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>type</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_10">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>70</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>130</y>
+       <width>47</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_8">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>160</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Numero telephone</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_11">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>160</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>250</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Quitter</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>240</y>
+       <width>101</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Nouveau dossier/2.1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
