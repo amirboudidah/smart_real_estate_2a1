@@ -3,6 +3,7 @@
 #include <QDebug>
 #include<QString>
 #include<QMessageBox>
+#include <QSqlQuery>
 
 employees::employees(int ide,QString nome,QString prenome,QString adressee,QString numtel,QString emaile,QString role,int numagence)
 {
