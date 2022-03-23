@@ -1710,6 +1710,22 @@
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="pushButton_20">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>440</y>
+          <width>121</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>modifier</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>

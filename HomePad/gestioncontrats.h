@@ -41,6 +41,7 @@ public:
     QSqlQueryModel * comboboxcontrat();
     QSqlQueryModel * testexist(QString ch);
     void writePdf(QString num);
+    void writeqrcode(QString code,QString id);
 };
 
 #endif // GESTIONCONTRATS_H

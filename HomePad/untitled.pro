@@ -1,4 +1,4 @@
-QT       += core gui sql printsupport \
+QT       += core gui sql printsupport svg \
     quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -22,21 +22,20 @@ SOURCES += \
     gestioncontrats.cpp \
     main.cpp \
     mainwindow.cpp \
-    modifiercontrat.cpp \
-    newwindow.cpp
+    newwindow.cpp \
+    qrcode.cpp
 
 HEADERS += \
     connection.h \
     contenu.h \
     gestioncontrats.h \
     mainwindow.h \
-    modifiercontrat.h \
-    newwindow.h
+    newwindow.h \
+    qrcode.h
 
 FORMS += \
     contenu.ui \
     mainwindow.ui \
-    modifiercontrat.ui \
     newwindow.ui
 
 RC_ICONS = logo.ico

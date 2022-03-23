@@ -6,6 +6,15 @@
 #include <QSqlQueryModel>
 #include <QSqlRecord>
 #include <QFile>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <QFileDialog>
+#include <QPixmap>
+#include <QSvgRenderer>
+#include "qrcode.h"
+
+
 gestioncontrats::gestioncontrats(int numcontrat,int CIN,QString typec,QString contenu,QString imageqr,QString datec)
 {
     this->numcontrat=numcontrat;
@@ -14,7 +23,6 @@ gestioncontrats::gestioncontrats(int numcontrat,int CIN,QString typec,QString co
     this->contenu=contenu;
     this->imageqr=imageqr;
     this->datec=datec;
-
 }
 
 bool gestioncontrats::ajouter()
@@ -134,7 +142,7 @@ gestioncontrats c;
 QSqlQueryModel * model=c.testexist(num);
 QString numcontrat=model->record(0).value(0).toString();
 QString contenu = model->record(0).value(2).toString();
-QString imageqr = model->record(0).value(3).toString();
+QString imageqr = "C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+numcontrat+".png";
 QString filename1="C:/Users/amirb/Desktop/GitHub/HomePad/Contrat_"+numcontrat+".docx";
 QFile file( filename1 );
 QTextStream stream( &file );
@@ -157,16 +165,46 @@ if (inputFile.open(QIODevice::ReadOnly))
        line = in.readLine();
       pdfcontenu[i]=line;
       painter.drawText(0,j,pdfcontenu[i]);
-      qDebug() << pdfcontenu[i] << i ;
       i=i+1;
       j=j+150;
    }
    inputFile.close();
 }
+QImage logo("C:/Users/amirb/Desktop/GitHub/HomePad/logo.png");
+painter.drawImage(6000,3000,logo);
 QImage image(imageqr);
-painter.drawImage(100,j+150,image);
+painter.drawImage(3500,j+150,image);
 painter.end();
 file.remove();
+}
+
+void gestioncontrats::writeqrcode(QString code,QString id)
+{
+                   std::string str = code.toStdString();
+                   const QrCode qr =QrCode::encodeText(str.c_str(), QrCode::Ecc::LOW);
+                   QString file="C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+id+".svg";
+                   std::ofstream myfile;
+                   myfile.open(file.toStdString());
+                   myfile << qr.toSvgString(1);
+                   myfile.close();
+                   QSvgRenderer svgRenderer(QString("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+id+".svg"));
+                   QPixmap pix( QSize(1000, 1000) );
+                   QPainter pixPainter( &pix );
+                   svgRenderer.render( &pixPainter );
+                   // Load your SVG
+                   QSvgRenderer renderer(QString("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+id+".svg"));
+
+                   // Prepare a QImage with desired characteritisc
+                   QImage image(2000,2000, QImage::Format_ARGB32);
+                   image.fill(0xaaA08080);  // partly transparent red-ish background
+
+                   // Get QPainter that paints to the image
+                   QPainter painter(&image);
+                   renderer.render(&painter);
+                   // Save, image format based on file extension
+                   image.save("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+id+".png");
+                   QFile F(file);
+                   F.remove();
 }
 
 

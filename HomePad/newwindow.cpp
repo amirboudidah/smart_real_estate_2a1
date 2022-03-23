@@ -1,4 +1,4 @@
-#include "modifiercontrat.h"
+
 #include "newwindow.h"
 #include "ui_newwindow.h"
 #include <QMessageBox>
@@ -11,6 +11,10 @@
 #include <QFile>
 #include <QTextStream>
 #include <QPdfWriter>
+#include <QSqlRecord>
+#include <QMessageBox>
+
+
 
 
 newWindow::newWindow(QWidget *parent) :
@@ -82,7 +86,7 @@ void newWindow::on_listWidget_itemClicked(QListWidgetItem *item)
         }
 }
 
-void newWindow::on_pushButton_27_clicked()
+void newWindow::on_pushButton_27_clicked()//ajout
 {
     bool test=false;
     QString typec;
@@ -95,7 +99,7 @@ void newWindow::on_pushButton_27_clicked()
         typec="achat";
     else
         typec="vendre";
-    QString imageqr="C:/Users/amirb/Desktop/GitHub/HomePad/refresh.png";
+    QString imageqr="qrcode_"+numcontratstring+".svg";
     QString datec=ui->dateEdit_3->date().toString("dd/MM/yyyy");
     gestioncontrats c(numcontrat,cin,typec,contenu,imageqr,datec);
     int flag0=0;
@@ -177,6 +181,8 @@ void newWindow::on_pushButton_27_clicked()
             QMessageBox::warning(this,"existe","click cancel to exit.");
         }
         else{
+            QString code= ui->lineEdit_11->text()+"/"+ui->lineEdit_12->text();
+            c.writeqrcode(code,ui->lineEdit_11->text());
         test=c.ajouter();
 
     ui->comboBox->setModel(cont.comboboxcontrat());
@@ -208,6 +214,10 @@ void newWindow::on_pushButton_30_clicked()
     {
     int numcontrat=ui->comboBox->currentText().toInt();
     bool test=cont.supprimer(numcontrat);
+    QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contrats/Contrat_"+ui->comboBox->currentText()+".pdf");
+    QFile file1("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+ui->comboBox->currentText()+".png");
+    file.remove();
+    file1.remove();
     ui->tableView->setModel(cont.afficher());
     ui->comboBox->setModel(cont.comboboxcontrat());
     if(test){
@@ -271,10 +281,24 @@ void newWindow::on_pushButton_29_clicked()
     }
     else
     {
-    c.setNumcontrat(ui->comboBox->currentText().toInt());
-    mod= new modifiercontrat(this);
-    mod->setcontrat(c);
-    mod->show();
+
+        ui->tabWidget->setCurrentIndex(1);
+        ui->pushButton_20->setEnabled(true);
+        ui->lineEdit_11->setText(ui->comboBox->currentText());
+        ui->lineEdit_11->setEnabled(false);
+        QSqlQueryModel * model=c.testexist(ui->lineEdit_11->text());
+        ui->lineEdit_12->setText(model->record(0).value(5).toString());
+        ui->textEdit_4->setText(model->record(0).value(2).toString());
+        if(model->record(0).value(1).toString()== "achat")
+        {
+            ui->radioButton_5->setChecked(true);
+        }
+        else if(model->record(0).value(1).toString()== "vendre")
+        {
+            ui->radioButton_6->setChecked(true);
+        }
+        ui->dateEdit_3->setDate(model->record(0).value(2).toDate());
+
     }
 }
 
@@ -373,9 +397,126 @@ void newWindow::on_pushButton_26_clicked()
     ui->radioButton_5->setChecked(false);
     ui->radioButton_5->setAutoExclusive(true);
     ui->dateEdit_3->clear();
+    ui->lineEdit_11->setEnabled(true);
+    ui->pushButton_20->setEnabled(false);
 }
 
 void newWindow::on_lineEdit_10_textEdited(const QString &arg1)
 {
     ui->tableView->setModel(cont.recherche(ui->lineEdit_10->text()));
+}
+
+void newWindow::on_pushButton_20_clicked()
+{
+    QString numcontratstring =ui->lineEdit_11->text();
+    QString cinstring=ui->lineEdit_12->text();
+    int numcontrat=ui->lineEdit_11->text().toInt();
+    int cin=ui->lineEdit_12->text().toInt();
+    QString contenu=ui->textEdit_4->toPlainText();
+    QString typec;
+    if(ui->radioButton_5->isChecked())
+    {
+        typec="achat";
+    }
+    else if(ui->radioButton_6->isChecked())
+    {
+        typec="vendre";
+    }
+    QString datec=ui->dateEdit_3->date().toString("dd/MM/yyyy");
+    QString imageqr="C:/Users/amirb/Desktop/GitHub/HomePad/building.png";
+    gestioncontrats c;
+    int flag0=0;
+
+    if(ui->radioButton_5->isChecked() || ui->radioButton_6->isChecked())
+    {
+        flag0=0;
+
+    }
+    else flag0=1;
+
+    int flag1 = 0;
+
+    if (numcontratstring.isEmpty())
+    {
+        flag1=1;
+    }
+    else
+    {
+        for(int i = 0; i < numcontratstring.length(); ++i)
+        {
+            if((numcontratstring[i] >= '0') && (numcontratstring[i] <= '9') )
+              {
+                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid green}");
+              }
+            else
+            {
+                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid red}");
+                flag1 = 1;
+
+                break;
+            }
+        }
+    }
+
+    int flag2 = 0;
+
+    if(cinstring.isEmpty())
+    {
+        flag2=1;
+    }
+    else
+    {
+    for(int i = 0; i < cinstring.length(); ++i)
+    {
+        if((cinstring[i] >= '0') && (cinstring[i] <= '9') )
+          {
+            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+          }
+        else
+        {
+            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid red}");
+            flag2 = 1;
+
+            break;
+        }
+    }
+    }
+
+    int flag3=0;
+
+    if(ui->textEdit_4->document()->isEmpty())
+    {
+        flag3=1;
+    }
+
+    if(flag0==1)
+        QMessageBox::warning(this,"type/contenu","Wrong Input!");
+    else if (flag1==1)
+        QMessageBox::warning(this,"numcontrat","Wrong Input!");
+    else if (flag2==1)
+        QMessageBox::warning(this,"idclient","Wrong Input!");
+    else if (flag3==1)
+        QMessageBox::warning(this,"contenu","Wrong Input!");
+    else {
+
+    bool test=c.Modifier(numcontrat,typec,contenu,imageqr,datec,cin);
+    if(test){
+            QMessageBox::warning(this,"modification effectue","click cancel to exit.");
+            ui->lineEdit_11->clear();
+            ui->lineEdit_12->clear();
+            ui->textEdit_4->clear();
+            ui->radioButton_5->setAutoExclusive(false);
+            ui->radioButton_5->setChecked(false);
+            ui->radioButton_5->setAutoExclusive(true);
+            ui->dateEdit_3->clear();
+            ui->pushButton_20->setEnabled(false);
+            ui->lineEdit_11->setEnabled(true);
+            ui->tableView->setModel(cont.afficher());
+            ui->comboBox->setModel(cont.comboboxcontrat());
+        }
+        else
+            QMessageBox::warning(this,"modification NON effectue","click cancel to exit.");
+
+}
 }

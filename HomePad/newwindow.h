@@ -1,6 +1,5 @@
 #ifndef NEWWINDOW_H
 #define NEWWINDOW_H
-#include "modifiercontrat.h"
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QTabBar>
@@ -48,10 +47,11 @@ private slots:
 
     void on_lineEdit_10_textEdited(const QString &arg1);
 
+    void on_pushButton_20_clicked();
+
 private:
     Ui::newWindow *ui;
     gestioncontrats cont;
-    modifiercontrat * mod;
     contenu * content;
 
 };
