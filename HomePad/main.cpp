@@ -3,11 +3,13 @@
 #include <QApplication>
 #include "connection.h"
 #include <QMessageBox>
+#include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    MainWindow w;
+       w.show();
     //open qss file
     QFile file("..\\HomePad\\SpyBot.qss");
     file.open(QFile::ReadOnly);
@@ -16,9 +18,8 @@ int main(int argc, char *argv[])
 
     //setup stylesheet
     a.setStyleSheet(styleSheet);
-
-    MainWindow w;
-    w.show();
+  //  MainWindow w;
+   // w.show();
 
     Connection c;
     bool test=c.createconnect();

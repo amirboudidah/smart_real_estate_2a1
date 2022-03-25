@@ -9,6 +9,9 @@
 #include <QFormLayout>
 #include <QIntValidator>
 #include <QComboBox>
+#include <QTcpSocket>
+#include <QTextStream>
+
 newWindow::newWindow(QWidget *parent) :
 
     QMainWindow(parent),
@@ -270,13 +273,18 @@ void newWindow::on_pushButton_6_clicked()// boutton supprimer
 
 }
 
-void newWindow::on_pushButton_5_clicked()// ouvrir le dialogue de modification
+void newWindow::on_pushButton_5_clicked()// ouvrir la modification (page ajouter)
 {
-    GestionAgence G;
-    G.setnumAgence(ui->comboBox->currentText().toInt());
-    M=new modifieragence(this);
-    M->setagence(G);
-    M->show();
+ui->tabWidget_2->setCurrentIndex(0);
+ui->pushButton_7->setEnabled(true);
+ui->lineEdit_5->setText(ui->comboBox->currentText());
+ui->lineEdit_5->setEnabled(false);
+GestionAgence g;
+QSqlQueryModel * model=g.testexist(ui->lineEdit_5->text());
+ui->lineEdit_6->setText(model->record(0).value(1).toString());
+ui->lineEdit_8->setText(model->record(0).value(2).toString());
+ui->lineEdit_27->setText(model->record(0).value(3).toString());
+ui->lineEdit_26->setText(model->record(0).value(4).toString());
 
 }
 
@@ -413,4 +421,169 @@ void newWindow::on_comboBox_2_currentIndexChanged(int index)//tri
         t="ville";
         ui->tableView->setModel(G.trier(t));
     }
+}
+
+void newWindow::on_pushButton_7_clicked() //button modifier (page ajouter)
+{
+    QString numAgencestring=ui->lineEdit_5->text();
+    int numAgence=ui->lineEdit_5->text().toInt();
+    QString nomAgence=ui->lineEdit_6->text();
+    QString ville=ui->lineEdit_8->text();
+    QString adresseA=ui->lineEdit_26->text();
+    QString numtelA=ui->lineEdit_27->text();
+    GestionAgence A;
+int flag1 = 0;
+if(ui->lineEdit_6->text().isEmpty())
+     {
+         flag1=1;
+     }
+else{
+ for(int i = 0; i < nomAgence.length(); ++i)
+ {
+     if(    (((nomAgence[i] >= 'A') && (nomAgence[i] <= 'Z')) || ((nomAgence[i] >= 'a') && (nomAgence[i] <= 'z'))) || (nomAgence[i] == ' '))
+       {
+         ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+       }
+     else
+     {
+         ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid red}");
+         flag1 = 1;
+
+         break;
+     }
+ }}
+
+int flag2 = 0;
+if(ui->lineEdit_5->text().isEmpty())
+     {
+         flag2=1;
+     }
+else{
+ for(int i = 0; i < numAgencestring.length(); ++i)
+ {
+     if((numAgencestring[i] >= '0') && (numAgencestring[i] <= '9') )
+       {
+         ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+       }
+     else
+     {
+         ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid red}");
+         flag2 = 1;
+
+         break;
+     }
+ }
+
+
+ }
+
+int flag3 = 0;
+if(ui->lineEdit_27->text().isEmpty())
+{
+    flag3=1;
+}
+else
+{
+for(int i = 1; i < numtelA.length(); ++i)
+{
+    if((((numtelA[i] >= '0') && (numtelA[i] <= '9')) && (numtelA.length()==8)) )
+      {
+        ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+      }
+    else
+    {
+        ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid red}");
+        flag3 = 1;
+    }
+}
+}
+
+int flag4 = 0;
+if (ui->lineEdit_26->text().isEmpty())
+{
+     flag4=1;
+}
+else{
+
+         for(int i = 0; i < adresseA.length(); ++i)
+         {
+             if((((((adresseA[i] >= 'A') && (adresseA[i] <= 'Z')) ||( ((adresseA[i] >= 'a') && (adresseA[i] <= 'z')) || ((adresseA[i] >= '0') && (adresseA[i] <= '9'))) || (adresseA[i] == ' ')) || (adresseA[i] == '/')) || (adresseA[i] == '\'')) || (adresseA[i] == '.') )
+               {
+                 ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+               }
+             else
+             {
+                 ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid red}");
+                 flag4 = 1;
+
+                 break;
+             }
+         }
+
+}
+
+int  flag5=0;
+if(ui->lineEdit_8->text().isEmpty())
+ {
+     flag5=1;
+ }
+else
+ {
+     for(int i = 0; i < ville.length(); ++i)
+     {
+         if(    (((ville[i] >= 'A') && (ville[i] <= 'Z')) || ((ville[i] >= 'a') && (ville[i] <= 'z'))) || (ville[i] == ' '))
+           {
+             ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid green}");
+
+           }
+         else
+         {
+             ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid red}");
+             flag5 = 1;
+
+             break;
+         }
+     }
+
+ }
+
+if(flag1==1)
+QMessageBox::warning(this,"nom agence","Wrong Input!");
+else if (flag2==1)
+QMessageBox::warning(this,"num agence","Wrong Input!");
+else if(flag3==1)
+QMessageBox::warning(this,"num tel","Wrong Input!");
+else if(flag4==1)
+QMessageBox::warning(this,"adresse","Wrong Input!");
+else if(flag5==1)
+QMessageBox::warning(this,"ville","Wrong Input!");
+else{
+    bool test=A.Modifier(numAgence,nomAgence,ville,adresseA,numtelA);
+
+    if(test){
+         QMessageBox::warning(this,"modification effectue","Click Cancel to exit.");
+         ui->lineEdit_5->clear();
+         ui->lineEdit_6->clear();
+         ui->lineEdit_8->clear();
+         ui->lineEdit_26->clear();
+         ui->lineEdit_27->clear();
+         ui->lineEdit_5->setEnabled(true);
+         ui->pushButton_7->setEnabled(false);
+         ui->tableView->setModel(G.afficher()); //si ilya une modification il va afficher
+         ui->comboBox->setModel(G.comboBoxAgence());//refresh combobox
+    }
+    else{
+          QMessageBox::warning(this,"modification non effectue","Click Cancel to exit.");
+}
+}
+}
+
+void newWindow::on_pushButton_8_clicked()
+{
+    widget = new Widget(this);
+    widget->show();
 }

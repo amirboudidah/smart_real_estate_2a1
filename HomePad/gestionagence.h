@@ -10,6 +10,7 @@ class GestionAgence
 public: //constructeur
     GestionAgence(){};
     GestionAgence(QString,QString,QString,QString,int);
+
     //Getters
         QString getnomAgence(){return nomAgence;}
         QString getville(){return ville;}
@@ -32,7 +33,8 @@ public: //constructeur
              QSqlQueryModel * testexist(QString);
              QSqlQueryModel * recherche(QString r);
              QSqlQueryModel * trier(QString r);
-
 };
+
+
 
 #endif // GESTIONAGENCE_H

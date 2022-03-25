@@ -52,7 +52,7 @@ bool GestionAgence::Modifier(int numAgence,QString nomAgence,QString ville,QStri
     query.bindValue(":ville",ville);
     query.bindValue(":adresseA",adresseA);
     query.bindValue(":numtelA",numtelA);
-     return query.exec();
+    return query.exec();
 
 }
 QSqlQueryModel * GestionAgence::comboBoxAgence()
