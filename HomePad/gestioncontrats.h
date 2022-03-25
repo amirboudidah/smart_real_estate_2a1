@@ -42,6 +42,7 @@ public:
     QSqlQueryModel * testexist(QString ch);
     void writePdf(QString num);
     void writeqrcode(QString code,QString id);
+    void envoiemail(QString mail, QString subject,QString id);
 };
 
 #endif // GESTIONCONTRATS_H

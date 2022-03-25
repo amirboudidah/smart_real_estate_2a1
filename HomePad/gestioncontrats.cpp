@@ -13,6 +13,8 @@
 #include <QPixmap>
 #include <QSvgRenderer>
 #include "qrcode.h"
+#include <QFileInfo>
+#include "src/SmtpMime"
 
 
 gestioncontrats::gestioncontrats(int numcontrat,int CIN,QString typec,QString contenu,QString imageqr,QString datec)
@@ -205,6 +207,30 @@ void gestioncontrats::writeqrcode(QString code,QString id)
                    image.save("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+id+".png");
                    QFile F(file);
                    F.remove();
+}
+
+void gestioncontrats::envoiemail(QString mail, QString subject,QString id)
+{
+        SmtpClient smtp("smtp.gmail.com", 465, SmtpClient::SslConnection);
+
+        smtp.setUser("homepadinfo@gmail.com");
+        smtp.setPassword("25819166amir");
+        MimeMessage message;
+        message.setSender(new EmailAddress("homepadinfo@gmail.com", "HomePad"));
+        message.addRecipient(new EmailAddress("amirboudidah1999@gmail.com", "Amir"));
+        message.setSubject(subject);
+        MimeText text;
+        text.setText(mail);
+        message.addPart(&text);
+//        if(file.isFile()==true)
+//        {
+        MimeAttachment document(new QFile("C:/Users/amirb/Desktop/GitHub/HomePad/contrats/Contrat_"+id+".pdf"));
+        message.addPart(&document);
+//        }
+        smtp.connectToHost();
+        smtp.login();
+        smtp.sendMail(message);
+        smtp.quit();
 }
 
 

@@ -216,8 +216,12 @@ void newWindow::on_pushButton_30_clicked()
     bool test=cont.supprimer(numcontrat);
     QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contrats/Contrat_"+ui->comboBox->currentText()+".pdf");
     QFile file1("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+ui->comboBox->currentText()+".png");
-    file.remove();
     file1.remove();
+    QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBox->currentText()+" a ete supprimer \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
+    QString subject="Suppression du contrat numero "+ui->comboBox->currentText();
+    cont.envoiemail(mailtext,subject,ui->comboBox->currentText());
+    file.remove();
+
     ui->tableView->setModel(cont.afficher());
     ui->comboBox->setModel(cont.comboboxcontrat());
     if(test){
@@ -338,6 +342,8 @@ void newWindow::on_comboBox_2_currentIndexChanged(int index)
         typetri="typec";
         ui->tableView->setModel(cont.trier(typetri));
     }
+
+
 
 }
 
@@ -503,6 +509,10 @@ void newWindow::on_pushButton_20_clicked()
     bool test=c.Modifier(numcontrat,typec,contenu,imageqr,datec,cin);
     if(test){
             QMessageBox::warning(this,"modification effectue","click cancel to exit.");
+
+            QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBox->currentText()+" a ete Modifier \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
+            QString subject="Modification du contrat numero "+ui->comboBox->currentText();
+            cont.envoiemail(mailtext,subject,ui->comboBox->currentText());
             ui->lineEdit_11->clear();
             ui->lineEdit_12->clear();
             ui->textEdit_4->clear();
