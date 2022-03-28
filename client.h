@@ -8,6 +8,7 @@
 #include<QtSql/QSqlQueryModel>
 #include <QSqlDatabase>
 
+
 class client
 {
 public:
@@ -31,10 +32,11 @@ public:
 
     bool ajouter();
     QSqlQueryModel * afficher();
-    QSqlQueryModel * trie();
+    QSqlQueryModel * affichertrie(int index);
+    QSqlQueryModel * recherche(QString xd);
  bool modifierj(int cin ,QString nomcl , QString prenomcl ,QString emailcl ,QString typecl,QString numtelcl);
   bool supprimer(int);
-
+void genererPDF();
 
 
 private :

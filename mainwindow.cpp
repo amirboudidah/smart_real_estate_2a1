@@ -15,6 +15,7 @@
 #include "client.h"
 #include "QFile"
 #include "QTextStream"
+#include "historique.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
       ui->setupUi(this);
    ui->cin->setValidator(new QIntValidator(0,999999,this));
+   ui->emailcl->setValidator(new QRegExpValidator(  QRegExp("[a-z]{1,10}@[a-z]{1,4}\\.[a-z]{1,4}")  ));
+   ui->nomcl->setValidator(new QRegExpValidator(  QRegExp("[A-z]*")  ));
+   ui->prenomcl->setValidator(new QRegExpValidator(  QRegExp("[A-z]*")  ));
 
 }
 
@@ -43,7 +47,8 @@ void MainWindow::on_pushButton_clicked()//ajouter
         QString emailcl(ui->emailcl->text());
         QString typecl(ui->typecl->currentText());
         qDebug() << ui->typecl->currentText();
-
+    Historique h;
+         h.save("nomcl:"+ui->nomcl->text(),"prenomcl :"+ui->prenomcl->text(),"numtelcl:"+ui->numtelcl->text());
          client c(cin,nomcl,prenomcl,emailcl,typecl,numtelcl);
 
     bool test=c.ajouter();
@@ -107,7 +112,30 @@ void MainWindow::on_pushButton_6_clicked()
                 msgBox.exec();
 }
 
+
+
+void MainWindow::on_pushButton_7_clicked()
+{
+  Historique h;
+h.load();
+h.load();
+}
+
 void MainWindow::on_pushButton_4_clicked()
 {
-   //ui->tableView->setModel(c->trie());
+    client c;
+     c.genererPDF();
+     QString link="C:/Users/user/Desktop/interfaceG_projet/liste.pdf";
+         QDesktopServices::openUrl(QUrl(link));
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    ui->tableView->setModel(c->affichertrie(index));
+}
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    ui->tableView->setModel(c->recherche(arg1));
+
 }

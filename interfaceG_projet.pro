@@ -20,12 +20,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     client.cpp \
     connexion.cpp \
+    historique.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     client.h \
     connexion.h \
+    historique.h \
     mainwindow.h
 
 FORMS += \
@@ -39,3 +41,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    SpyBot.qss
