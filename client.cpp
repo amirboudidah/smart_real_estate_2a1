@@ -117,7 +117,7 @@ bool client :: supprimer(int id)
 void  client::genererPDF(){
 //QDateTime datecreation = date.currentDateTime();
               //QString afficheDC = "Date de Creation PDF : " + datecreation.toString() ;
-                     QPdfWriter pdf("C:/Users/Administrateur/OneDrive/Bureau/liste.pdf");
+                     QPdfWriter pdf("C:/Users/user/Desktop/interfaceG_projet/liste.pdf");
                      QPainter painter(&pdf);
                     int i = 4000;
                          painter.setPen(Qt::red);
@@ -133,6 +133,9 @@ void  client::genererPDF(){
                          painter.drawText(200,3300,"CIN");
                          painter.drawText(1300,3300,"nom");
                          painter.drawText(2100,3300,"prenom");
+                         painter.drawText(3300,3300,"email");
+                         painter.drawText(4500,3300,"type");
+                         painter.drawText(5300,3300,"num tel");
 
                          QSqlQuery query;
                          query.prepare("select * from CLIENTS");
@@ -141,8 +144,11 @@ void  client::genererPDF(){
                          {
                              painter.drawText(200,i,query.value(0).toString());
                              painter.drawText(1300,i,query.value(1).toString());
-                             painter.drawText(2200,i,query.value(2).toString());
-                             painter.drawText(3200,i,query.value(4).toString());
+                             painter.drawText(2100,i,query.value(2).toString());
+                             painter.drawText(3300,i,query.value(3).toString());
+                             painter.drawText(4500,i,query.value(4).toString());
+                             painter.drawText(5300,i,query.value(5).toString());
+
 
                             i = i + 500;
                          }

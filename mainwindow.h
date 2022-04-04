@@ -8,7 +8,12 @@
 namespace Ui {
 class MainWindow;
 }
-
+class QCamera ;
+class QCameraViewfinder;
+class QCameraImageCapture;
+class QVBoxLayout;
+class QMenu;
+class QAction;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -61,7 +66,17 @@ private slots:
 private:
     Ui::MainWindow *ui;
     client *c;
+    QCamera *mCamera ;
+    QCameraViewfinder *mCameraViewfinder;
+    QCameraImageCapture *mCameraImageCapture;
+    QVBoxLayout *mLayout;
+    QMenu *mCamMenu;
+    QAction *mAllumerAction;
+    QAction *mEteindreAction;
+    QAction *mCapturerAction;
 
 };
+
+
 
 #endif // MAINWINDOW_H

@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setStyle("fusion");
     //open qss file
         QFile file("C:/Users/user/Desktop/interfaceG_projet/SpyBot.qss");
         file.open(QFile::ReadOnly);
