@@ -50,15 +50,11 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(int index);
 
-    void on_comboBox_currentTextChanged(const QString &arg1);
-
-    void on_comboBox_currentIndexChanged(int index);
-
-    void on_comboBox_currentIndexChanged(const QString &arg1);
-
     void on_pushButton_7_clicked();
 
     void on_pushButton_8_clicked();
+
+    void on_carteviste_clicked();
 
 private:
     Ui::newWindow *ui;

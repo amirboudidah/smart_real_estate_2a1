@@ -33,6 +33,8 @@ public: //constructeur
              QSqlQueryModel * testexist(QString);
              QSqlQueryModel * recherche(QString r);
              QSqlQueryModel * trier(QString r);
+             void cartevisite(QString numAgence);
+             QString calculchiffreaffaire();
 };
 
 

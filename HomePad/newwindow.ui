@@ -82,7 +82,7 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
@@ -342,10 +342,10 @@
        <widget class="QPushButton" name="pushButton_3">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>370</y>
-          <width>51</width>
-          <height>41</height>
+          <x>680</x>
+          <y>390</y>
+          <width>31</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -391,6 +391,32 @@
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>380</y>
+          <width>221</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>360</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>chiffre d'affaire :</string>
+        </property>
        </widget>
       </widget>
      </widget>
@@ -844,7 +870,7 @@
      <property name="geometry">
       <rect>
        <x>70</x>
-       <y>40</y>
+       <y>60</y>
        <width>91</width>
        <height>16</height>
       </rect>
@@ -857,7 +883,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>40</y>
        <width>51</width>
        <height>51</height>
       </rect>
@@ -897,6 +923,19 @@
     </property>
     <property name="text">
      <string>chat</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="carteviste">
+    <property name="geometry">
+     <rect>
+      <x>592</x>
+      <y>0</y>
+      <width>141</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>generer une cartevisite</string>
     </property>
    </widget>
   </widget>

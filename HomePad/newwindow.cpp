@@ -31,7 +31,7 @@ newWindow::newWindow(QWidget *parent) :
     ui->listWidget->setCurrentItem(item);
     ui->tableView->setModel(G.afficher());
     ui->comboBox->setModel(G.comboBoxAgence());
-
+    ui->label_12->setText(G.calculchiffreaffaire()); //chiffre d'affaire
     ui->lineEdit_6->clear();
     ui->lineEdit_8->clear();
     ui->lineEdit_26->clear();
@@ -242,6 +242,7 @@ else{
         ui->lineEdit_27->clear();
         ui->tableView->setModel(G.afficher());
         ui->comboBox->setModel(G.comboBoxAgence());
+        ui->label_12->setText(G.calculchiffreaffaire());
         if(test){
              QMessageBox::warning(this,"ajout effectue","Click Cancel to exit.");
         }
@@ -285,7 +286,7 @@ ui->lineEdit_6->setText(model->record(0).value(1).toString());
 ui->lineEdit_8->setText(model->record(0).value(2).toString());
 ui->lineEdit_27->setText(model->record(0).value(3).toString());
 ui->lineEdit_26->setText(model->record(0).value(4).toString());
-
+ui->label_12->setText(G.calculchiffreaffaire());
 }
 
 void newWindow::on_lineEdit_5_textEdited(const QString &str) //numagence
@@ -391,6 +392,9 @@ void newWindow::on_pushButton_3_clicked()//refresh
     ui->comboBox->setModel(G.comboBoxAgence());//numagence
     ui->comboBox->setCurrentIndex(0); //numagence
     ui->comboBox_2->setCurrentIndex(0); //tri
+    ui->label_12->setText(G.calculchiffreaffaire());//calcul chiffreaffaire
+
+
     ui->lineEdit->clear();
 }
 
@@ -575,6 +579,7 @@ else{
          ui->pushButton_7->setEnabled(false);
          ui->tableView->setModel(G.afficher()); //si ilya une modification il va afficher
          ui->comboBox->setModel(G.comboBoxAgence());//refresh combobox
+         ui->label_12->setText(G.calculchiffreaffaire());
     }
     else{
           QMessageBox::warning(this,"modification non effectue","Click Cancel to exit.");
@@ -582,8 +587,14 @@ else{
 }
 }
 
-void newWindow::on_pushButton_8_clicked()
+void newWindow::on_pushButton_8_clicked() //button chat
 {
     widget = new Widget(this);
     widget->show();
+}
+
+void newWindow::on_carteviste_clicked() //button pdf
+{
+    QString numagence="1";
+    G.cartevisite(numagence);
 }

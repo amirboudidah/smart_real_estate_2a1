@@ -1,7 +1,7 @@
 #include "dumessangersocket.h"
 #include <QTextStream>
 
-
+//connexion entre ui
 
 DuMessangerSocket::DuMessangerSocket(qintptr handle,QObject *parent):QTcpSocket(parent)
 {

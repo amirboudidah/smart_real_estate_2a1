@@ -20,7 +20,6 @@ public:
 private slots:
     void on_envoyer_clicked();
 
-    void on_connecter_clicked();
 
     void on_fermerchat_clicked();
 

@@ -8,6 +8,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    //connexion avec serveur
     mSocket= new QTcpSocket(this);
     connect(mSocket,&QTcpSocket::readyRead,[&](){
         QTextStream T(mSocket);
@@ -28,16 +29,11 @@ void Widget::on_envoyer_clicked()
 {
 
 QTextStream T(mSocket);
-T<< "eya"<<":"<<ui->message->text();
-mSocket->flush();
+T<< "eya"<<":"<<ui->message->text(); //utilisateur
+mSocket->flush(); //envoyer le msg au serveur
 ui->message->clear();
 }
 
-void Widget::on_connecter_clicked()
-{
-
-
-}
 
 void Widget::on_fermerchat_clicked()
 {
