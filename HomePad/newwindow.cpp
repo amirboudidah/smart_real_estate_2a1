@@ -35,6 +35,7 @@ newWindow::newWindow(QWidget *parent) :
     ui->listWidget->setCurrentItem(item);
     ui->tableView->setModel(cont.afficher());
     ui->comboBox->setModel(cont.comboboxcontrat());
+    ui->comboBox_3->setModel(cont.employespourcontrat());
 }
 
 newWindow::~newWindow()
@@ -91,9 +92,9 @@ void newWindow::on_pushButton_27_clicked()//ajout
     bool test=false;
     QString typec;
     QString numcontratstring=ui->lineEdit_11->text();
-    QString cinstring=ui->lineEdit_12->text();
+    QString cinstring=ui->comboBox_3->currentText();
     int numcontrat=ui->lineEdit_11->text().toInt();
-    int cin=ui->lineEdit_12->text().toInt();
+    int cin=ui->comboBox_3->currentText().toInt();
     QString contenu=ui->textEdit_4->toPlainText();
     if(ui->radioButton_5->isChecked())
         typec="achat";
@@ -141,24 +142,6 @@ void newWindow::on_pushButton_27_clicked()//ajout
     {
         flag2=1;
     }
-    else
-    {
-    for(int i = 0; i < cinstring.length(); ++i)
-    {
-        if((cinstring[i] >= '0') && (cinstring[i] <= '9') )
-          {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid green}");
-
-          }
-        else
-        {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid red}");
-            flag2 = 1;
-
-            break;
-        }
-    }
-    }
 
     int flag3=0;
 
@@ -181,14 +164,13 @@ void newWindow::on_pushButton_27_clicked()//ajout
             QMessageBox::warning(this,"existe","click cancel to exit.");
         }
         else{
-            QString code= ui->lineEdit_11->text()+"/"+ui->lineEdit_12->text();
+            QString code= ui->lineEdit_11->text()+"/"+ui->comboBox_3->currentText();
             c.writeqrcode(code,ui->lineEdit_11->text());
         test=c.ajouter();
 
     ui->comboBox->setModel(cont.comboboxcontrat());
     ui->tableView->setModel(cont.afficher());//MISE AJOUR
     ui->lineEdit_11->clear();
-    ui->lineEdit_12->clear();
     ui->textEdit_4->clear();
     ui->radioButton_5->setAutoExclusive(false);
     ui->radioButton_5->setChecked(false);
@@ -255,26 +237,7 @@ void newWindow::on_lineEdit_11_textEdited(const QString &str)
     }
 }
 
-void newWindow::on_lineEdit_12_textEdited(const QString &str)
-{
-    int flag = 0;
 
-    for(int i = 0; i < str.length(); ++i)
-    {
-        if((str[i] >= '0') && (str[i] <= '9') )
-          {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid green}");
-
-          }
-        else
-        {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid red}");
-            flag = 1;
-
-            break;
-        }
-    }
-}
 
 void newWindow::on_pushButton_29_clicked()
 {
@@ -291,7 +254,6 @@ void newWindow::on_pushButton_29_clicked()
         ui->lineEdit_11->setText(ui->comboBox->currentText());
         ui->lineEdit_11->setEnabled(false);
         QSqlQueryModel * model=c.testexist(ui->lineEdit_11->text());
-        ui->lineEdit_12->setText(model->record(0).value(5).toString());
         ui->textEdit_4->setText(model->record(0).value(2).toString());
         if(model->record(0).value(1).toString()== "achat")
         {
@@ -312,6 +274,7 @@ void newWindow::on_pushButton_19_clicked()
     ui->tableView->setModel(cont.afficher());//MISE AJOUR
     ui->comboBox_2->setCurrentIndex(0);
     ui->comboBox->setCurrentIndex(0);
+    ui->comboBox_3->setCurrentIndex(0);
     ui->lineEdit_10->clear();
 }
 
@@ -376,11 +339,6 @@ void newWindow::on_pushButton_17_clicked()
     }
 }
 
-void newWindow::on_pushButton_2_clicked()
-{
-
-}
-
 void newWindow::on_pushButton_16_clicked()
 {
     if(ui->comboBox->count()==0)
@@ -397,7 +355,6 @@ void newWindow::on_pushButton_16_clicked()
 void newWindow::on_pushButton_26_clicked()
 {
     ui->lineEdit_11->clear();
-    ui->lineEdit_12->clear();
     ui->textEdit_4->clear();
     ui->radioButton_5->setAutoExclusive(false);
     ui->radioButton_5->setChecked(false);
@@ -415,9 +372,9 @@ void newWindow::on_lineEdit_10_textEdited(const QString &arg1)
 void newWindow::on_pushButton_20_clicked()
 {
     QString numcontratstring =ui->lineEdit_11->text();
-    QString cinstring=ui->lineEdit_12->text();
+    QString cinstring=ui->comboBox_3->currentText();
     int numcontrat=ui->lineEdit_11->text().toInt();
-    int cin=ui->lineEdit_12->text().toInt();
+    int cin=ui->comboBox_3->currentText().toInt();
     QString contenu=ui->textEdit_4->toPlainText();
     QString typec;
     if(ui->radioButton_5->isChecked())
@@ -470,24 +427,6 @@ void newWindow::on_pushButton_20_clicked()
     {
         flag2=1;
     }
-    else
-    {
-    for(int i = 0; i < cinstring.length(); ++i)
-    {
-        if((cinstring[i] >= '0') && (cinstring[i] <= '9') )
-          {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid green}");
-
-          }
-        else
-        {
-            ui->lineEdit_12->setStyleSheet("QLineEdit{border: 2px solid red}");
-            flag2 = 1;
-
-            break;
-        }
-    }
-    }
 
     int flag3=0;
 
@@ -514,7 +453,6 @@ void newWindow::on_pushButton_20_clicked()
             QString subject="Modification du contrat numero "+ui->comboBox->currentText();
             cont.envoiemail(mailtext,subject,ui->comboBox->currentText());
             ui->lineEdit_11->clear();
-            ui->lineEdit_12->clear();
             ui->textEdit_4->clear();
             ui->radioButton_5->setAutoExclusive(false);
             ui->radioButton_5->setChecked(false);
@@ -529,4 +467,81 @@ void newWindow::on_pushButton_20_clicked()
             QMessageBox::warning(this,"modification NON effectue","click cancel to exit.");
 
 }
+}
+
+void newWindow::on_radioButton_5_clicked()
+{
+    if(ui->textEdit_4->toPlainText()=="")
+    {
+    QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratachat.txt");
+    file.open(QFile::ReadOnly);
+    QTextStream in(&file);
+    QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+    QString contents = QString::fromUtf8(file.readAll());
+    ui->textEdit_4->insertPlainText(contents);
+    QTextCursor position(ui->textEdit_4->document());
+    position.setPosition(130);
+    ui->textEdit_4->setTextCursor(position);
+    ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+    position.setPosition(79);
+    ui->textEdit_4->setTextCursor(position);
+    ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+    ui->textEdit_4->append(ui->dateEdit_3->text());
+    }
+    else{
+        ui->textEdit_4->clear();
+        QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratachat.txt");
+        file.open(QFile::ReadOnly);
+        QTextStream in(&file);
+        QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+        QString contents = QString::fromUtf8(file.readAll());
+        ui->textEdit_4->insertPlainText(contents);
+        QTextCursor position(ui->textEdit_4->document());
+        position.setPosition(81);
+        ui->textEdit_4->setTextCursor(position);
+        ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+        position.setPosition(51);
+        ui->textEdit_4->setTextCursor(position);
+        ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+        ui->textEdit_4->append(ui->dateEdit_3->text());
+    }
+}
+
+void newWindow::on_radioButton_6_clicked()
+{
+    if(ui->textEdit_4->toPlainText()=="")
+    {
+    QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratvendre.txt");
+    file.open(QFile::ReadOnly);
+    QTextStream in(&file);
+    QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+    QString contents = QString::fromUtf8(file.readAll());
+    ui->textEdit_4->insertPlainText(contents);
+    QTextCursor position(ui->textEdit_4->document());
+    position.setPosition(113);
+    ui->textEdit_4->setTextCursor(position);
+    ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+    position.setPosition(79);
+    ui->textEdit_4->setTextCursor(position);
+    ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+    ui->textEdit_4->append(ui->dateEdit_3->text());
+    }
+    else
+    {
+        ui->textEdit_4->clear();
+        QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratvente.txt");
+        file.open(QFile::ReadOnly);
+        QTextStream in(&file);
+        QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+        QString contents = QString::fromUtf8(file.readAll());
+        ui->textEdit_4->insertPlainText(contents);
+        QTextCursor position(ui->textEdit_4->document());
+        position.setPosition(107);
+        ui->textEdit_4->setTextCursor(position);
+        ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+        position.setPosition(77);
+        ui->textEdit_4->setTextCursor(position);
+        ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+        ui->textEdit_4->append(ui->dateEdit_3->text());
+    }
 }

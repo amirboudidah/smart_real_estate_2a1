@@ -23,7 +23,10 @@ void contenu::setconrat(gestioncontrats c)
     QString s = QString::number(c.getNumcontrat());
 
     QSqlQueryModel * model=c.testexist(s);
-    ui->plainTextEdit->setPlainText(model->record(0).value(2).toString());
+    QString myString(model->record(0).value(2).toString());
+    QByteArray inUtf8 = myString.toUtf8();
+    const char *data = inUtf8.constData();
+    ui->plainTextEdit->setPlainText(QString::fromUtf8(data));
 
 }
 

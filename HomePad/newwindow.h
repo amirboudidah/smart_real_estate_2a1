@@ -19,8 +19,6 @@ public:
     ~newWindow();
 
 private slots:
-    void on_pushButton_2_clicked();
-
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
     void on_pushButton_27_clicked();
@@ -28,8 +26,6 @@ private slots:
     void on_pushButton_30_clicked();
 
     void on_lineEdit_11_textEdited(const QString &arg1);
-
-    void on_lineEdit_12_textEdited(const QString &arg1);
 
     void on_pushButton_29_clicked();
 
@@ -48,6 +44,10 @@ private slots:
     void on_lineEdit_10_textEdited(const QString &arg1);
 
     void on_pushButton_20_clicked();
+
+    void on_radioButton_5_clicked();
+
+    void on_radioButton_6_clicked();
 
 private:
     Ui::newWindow *ui;

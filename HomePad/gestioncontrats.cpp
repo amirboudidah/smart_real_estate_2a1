@@ -161,21 +161,22 @@ int i=0;
 QString line;
 if (inputFile.open(QIODevice::ReadOnly))
 {
+
    QTextStream in(&inputFile);
    while (!in.atEnd())
    {
        line = in.readLine();
       pdfcontenu[i]=line;
-      painter.drawText(0,j,pdfcontenu[i]);
+      painter.drawText(0,j,QString::fromUtf8(pdfcontenu[i].toUtf8().constData()));
       i=i+1;
       j=j+150;
    }
    inputFile.close();
 }
 QImage logo("C:/Users/amirb/Desktop/GitHub/HomePad/logo.png");
-painter.drawImage(6000,3000,logo);
+painter.drawImage(7000,j+150,logo);
 QImage image(imageqr);
-painter.drawImage(3500,j+150,image);
+painter.drawImage(4000,j+150,image);
 painter.end();
 file.remove();
 }
@@ -233,4 +234,19 @@ void gestioncontrats::envoiemail(QString mail, QString subject,QString id)
         smtp.quit();
 }
 
+QSqlQueryModel * gestioncontrats::employespourcontrat()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+    model->setQuery("select * from employes");
+    return model;
+}
+
+QSqlQueryModel * gestioncontrats::specificemploye(QString id)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+    model->setQuery("select * from employes where ide='"+id+"'");
+    return model;
+}
 

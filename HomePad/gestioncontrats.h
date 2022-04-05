@@ -43,6 +43,8 @@ public:
     void writePdf(QString num);
     void writeqrcode(QString code,QString id);
     void envoiemail(QString mail, QString subject,QString id);
+    QSqlQueryModel * employespourcontrat();
+    QSqlQueryModel * specificemploye(QString id);
 };
 
 #endif // GESTIONCONTRATS_H
