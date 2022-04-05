@@ -75,7 +75,37 @@ bool Produits::modifier(int ID_Produit)
     query.bindValue(":DESCRIPTION",DESCRIPTION);
     query.bindValue(":ADRESSE",ADRESSE);
     query.bindValue(":IMAGE",IMAGE);
-
     return query.exec();
 
+}
+
+QSqlQueryModel* Produits::recherche_produits(QString prod){
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("SELECT * FROM PRODUITS where lower(cast(ID_PRODUIT as varchar2(20))) like (lower('"+prod+"%')) or lower(TYPE_PRODUIT) like (lower('"+prod+"%')) or lower(ADRESSE) like (lower('"+prod+"%'))");
+    model->setHeaderData(0, Qt::Horizontal,QObject::tr("ID_PRODUIT"));
+    model->setHeaderData(1, Qt::Horizontal,QObject::tr("TYPE_PRODUIT"));
+    model->setHeaderData(2, Qt::Horizontal,QObject::tr("ADRESSE"));
+    model->setHeaderData(3, Qt::Horizontal,QObject::tr("DESCRIPTION"));
+    model->setHeaderData(4, Qt::Horizontal,QObject::tr("IMAGE"));
+
+    return model;
+}
+
+QSqlQueryModel* Produits::trier_produits(QString prod){
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("SELECT * FROM PRODUITS order by "+prod);
+    model->setHeaderData(0, Qt::Horizontal,QObject::tr("ID_PRODUIT"));
+    model->setHeaderData(1, Qt::Horizontal,QObject::tr("TYPE_PRODUIT"));
+    model->setHeaderData(2, Qt::Horizontal,QObject::tr("ADRESSE"));
+    model->setHeaderData(3, Qt::Horizontal,QObject::tr("DESCRIPTION"));
+    model->setHeaderData(4, Qt::Horizontal,QObject::tr("IMAGE"));
+
+    return model;
+}
+
+QSqlQueryModel* Produits::statistiqueprod(){
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("SELECT count(*),TYPE_PRODUIT FROM PRODUITS group by TYPE_PRODUIT ");
+
+    return model;
 }

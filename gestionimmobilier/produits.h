@@ -24,7 +24,9 @@ public:
     QSqlQueryModel* afficher();
    bool Supprimer(int);
    bool modifier (int);
-
+   QSqlQueryModel* recherche_produits(QString prod);
+    QSqlQueryModel* trier_produits(QString prod);
+    QSqlQueryModel* statistiqueprod();
 
 private:
     int ID_PRODUIT;

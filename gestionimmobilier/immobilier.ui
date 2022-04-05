@@ -16,7 +16,7 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>10</y>
      <width>871</width>
      <height>481</height>
@@ -32,7 +32,7 @@
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -97,16 +97,6 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
      </property>
      <property name="text">
       <string>Ajouter</string>
-     </property>
-    </widget>
-    <widget class="QTableView" name="tableView_2">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>20</y>
-       <width>256</width>
-       <height>192</height>
-      </rect>
      </property>
     </widget>
     <widget class="QLineEdit" name="Type">
@@ -182,7 +172,7 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
      <property name="geometry">
       <rect>
        <x>510</x>
-       <y>230</y>
+       <y>290</y>
        <width>151</width>
        <height>28</height>
       </rect>
@@ -207,24 +197,24 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6">
+    <widget class="QLabel" name="img">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>230</y>
-       <width>61</width>
-       <height>20</height>
+       <x>460</x>
+       <y>30</y>
+       <width>261</width>
+       <height>171</height>
       </rect>
      </property>
      <property name="text">
-      <string>Image</string>
+      <string/>
      </property>
     </widget>
-    <widget class="QLineEdit" name="Image">
+    <widget class="QLineEdit" name="img2">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>230</y>
+       <x>520</x>
+       <y>260</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -239,7 +229,7 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>230</y>
+       <y>140</y>
        <width>171</width>
        <height>161</height>
       </rect>
@@ -254,52 +244,6 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
       <string/>
      </property>
     </widget>
-    <widget class="QLineEdit" name="typemod">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>90</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_14">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>90</y>
-       <width>56</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_15">
-     <property name="geometry">
-      <rect>
-       <x>65</x>
-       <y>130</y>
-       <width>71</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Description</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="admod">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>180</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
@@ -311,29 +255,6 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
      </property>
      <property name="text">
       <string>Modifier</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="decmod">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>130</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>75</x>
-       <y>180</y>
-       <width>61</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Adresse</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_17">
@@ -394,6 +315,91 @@ radius: 1.65, stop: 0 #0936F5, stop: 1 #0936F5);
        <height>341</height>
       </rect>
      </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>360</y>
+       <width>161</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Recherche...</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>390</y>
+       <width>73</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>NONE</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>id prod</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>type</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>id emp</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>390</y>
+       <width>56</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>trier par</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>400</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PDF</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Statistique</string>
+    </attribute>
+    <widget class="QFrame" name="horizontalFrame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>851</width>
+       <height>431</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
     </widget>
    </widget>
   </widget>

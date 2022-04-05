@@ -2,10 +2,19 @@
 #include"connection.h"
 #include"QMessageBox"
 #include <QApplication>
+#include <QFile>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    //open qss file
+        QFile file("C:/Users/yessi/Documents/gestionimmobilier/SpyBot.qss");
+        file.open(QFile::ReadOnly);
+
+        QString styleSheet { QLatin1String(file.readAll()) };
+
+        //setup stylesheet
+        a.setStyleSheet(styleSheet);
     MainWindow w;
     connection c;
     bool test=c.createconnect();
