@@ -8,7 +8,7 @@
 #include <QListWidgetItem>
 #include <QTabBar>
 #include <QTabWidget>
-#include "widget.h"
+#include "chatbox.h"
 namespace Ui {
 class newWindow;
 }
@@ -24,35 +24,33 @@ public:
     quint16 port() const;
 
 private slots:
-    void on_pushButton_2_clicked();
-
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
-    void on_pushButton_4_clicked();
+    void on_ajouterA_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_supprimeragence_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_gomodiferA_clicked();
 
-    void on_lineEdit_5_textEdited(const QString &str);
+    void on_numagence_textEdited(const QString &str);
 
-    void on_lineEdit_6_textEdited(const QString &arg1);
+    void on_nomagence_textEdited(const QString &arg1);
 
-    void on_lineEdit_27_textEdited(const QString &arg1);
+    void on_numtelagence_textEdited(const QString &arg1);
 
-    void on_lineEdit_26_textEdited(const QString &arg1);
+    void on_adresseagence_textEdited(const QString &arg1);
 
-    void on_lineEdit_8_textEdited(const QString &arg1);
+    void on_ville_textEdited(const QString &arg1);
 
-    void on_pushButton_3_clicked();
+    void on_refreshA_clicked();
 
-    void on_lineEdit_textEdited(const QString &arg1);
+    void on_rechercheragence_textEdited(const QString &arg1);
 
-    void on_comboBox_2_currentIndexChanged(int index);
+    void on_comboBoxtrieagence_currentIndexChanged(int index);
 
-    void on_pushButton_7_clicked();
+    void on_modifierA_clicked(); //modifier page ajouter
 
-    void on_pushButton_8_clicked();
+    void on_chatbox_clicked();
 
     void on_carteviste_clicked();
 

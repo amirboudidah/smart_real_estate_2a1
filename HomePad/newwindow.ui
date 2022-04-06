@@ -63,7 +63,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
-     <widget class="QTabWidget" name="tabWidget_2">
+     <widget class="QTabWidget" name="agencetabwidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -84,11 +84,11 @@
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="ajoutagencetab">
        <attribute name="title">
         <string>Ajouter</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_4">
+       <widget class="QGroupBox" name="ajoutmodiagence">
         <property name="geometry">
          <rect>
           <x>90</x>
@@ -100,7 +100,7 @@
         <property name="title">
          <string/>
         </property>
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="numagencelabel">
          <property name="geometry">
           <rect>
            <x>60</x>
@@ -113,7 +113,7 @@
           <string>Numero de l'agence:</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="nomAlabel">
          <property name="geometry">
           <rect>
            <x>60</x>
@@ -126,7 +126,7 @@
           <string>Nom de l'agence:</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="villeAlabel">
          <property name="geometry">
           <rect>
            <x>60</x>
@@ -139,7 +139,7 @@
           <string>Ville:</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_8">
+        <widget class="QLabel" name="adresseAlabel">
          <property name="geometry">
           <rect>
            <x>60</x>
@@ -152,7 +152,7 @@
           <string>Adresse:</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_31">
+        <widget class="QLabel" name="numtelagencelabel">
          <property name="geometry">
           <rect>
            <x>60</x>
@@ -165,7 +165,7 @@
           <string>Num tel:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_5">
+        <widget class="QLineEdit" name="numagence">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -175,7 +175,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_6">
+        <widget class="QLineEdit" name="nomagence">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -185,7 +185,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_8">
+        <widget class="QLineEdit" name="ville">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -195,7 +195,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_26">
+        <widget class="QLineEdit" name="adresseagence">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -205,7 +205,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_27">
+        <widget class="QLineEdit" name="numtelagence">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -215,7 +215,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="ajouterA">
          <property name="geometry">
           <rect>
            <x>390</x>
@@ -228,7 +228,7 @@
           <string>Ajouter</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="modifierA">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -246,11 +246,11 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="afficheagencetab">
        <attribute name="title">
         <string>Affichage</string>
        </attribute>
-       <widget class="QTableView" name="tableView">
+       <widget class="QTableView" name="tableagence">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -260,7 +260,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="supprimeragence">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -273,7 +273,7 @@
          <string>Supprimer</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="gomodiferA">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -286,7 +286,7 @@
          <string>Modifier</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="comboBoxidagence">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -296,7 +296,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox_2">
+       <widget class="QComboBox" name="comboBoxtrieagence">
         <property name="geometry">
          <rect>
           <x>540</x>
@@ -326,7 +326,7 @@
          </property>
         </item>
        </widget>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="labelagencetrie">
         <property name="geometry">
          <rect>
           <x>470</x>
@@ -339,7 +339,7 @@
          <string>trier par:</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="refreshA">
         <property name="geometry">
          <rect>
           <x>680</x>
@@ -371,9 +371,9 @@
           <height>30</height>
          </rect>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayoutrechercheA">
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="iconrechercheagence">
            <property name="text">
             <string/>
            </property>
@@ -384,7 +384,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="rechercheragence">
            <property name="placeholderText">
             <string>recherche...</string>
            </property>
@@ -392,7 +392,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="label_12">
+       <widget class="QLabel" name="estimationchiffre">
         <property name="geometry">
          <rect>
           <x>230</x>
@@ -405,7 +405,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="chiffredaffaire">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -912,7 +912,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="chatbox">
     <property name="geometry">
      <rect>
       <x>740</x>

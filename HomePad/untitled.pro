@@ -19,26 +19,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chatbox.cpp \
     connection.cpp \
     gestionagence.cpp \
     main.cpp \
     mainwindow.cpp \
-    newwindow.cpp \
-    widget.cpp
+    newwindow.cpp
 
 QMAKE_CXXFLAGS += -std=gnu++11
 
 HEADERS += \
+    chatbox.h \
     connection.h \
     gestionagence.h \
     mainwindow.h \
-    newwindow.h \
-    widget.h
+    newwindow.h
 
 FORMS += \
+    chatbox.ui \
     mainwindow.ui \
-    newwindow.ui \
-    widget.ui
+    newwindow.ui
 
 RC_ICONS = logo.ico
 

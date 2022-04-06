@@ -139,9 +139,9 @@ QString GestionAgence::calculchiffreaffaire()
     int totalsalaire;
     int totalprod;
     QSqlQueryModel * model=new QSqlQueryModel();
-    model->setQuery("select count(*) from employe where role='employe'");
-    float salaireemp=model->record(0).value(0).toInt()*1.2*12;
-    model->setQuery("select count(*) from employe where role='gerant'");
+    model->setQuery("select count(*) from employes where role='employe'");
+    int salaireemp=model->record(0).value(0).toInt()*1.2*12;
+    model->setQuery("select count(*) from employes where role='gerant'");
     int salaireger=model->record(0).value(0).toInt()*3*12;
     totalsalaire=salaireemp+salaireger;
 

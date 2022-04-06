@@ -1,12 +1,12 @@
 INPUT(
+./release\chatbox.o
 ./release\connection.o
 ./release\gestionagence.o
 ./release\main.o
 ./release\mainwindow.o
 ./release\newwindow.o
-./release\widget.o
 ./release\qrc_GFX.o
+./release\moc_chatbox.o
 ./release\moc_mainwindow.o
 ./release\moc_newwindow.o
-./release\moc_widget.o
 );

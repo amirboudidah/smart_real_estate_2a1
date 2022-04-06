@@ -29,24 +29,19 @@ newWindow::newWindow(QWidget *parent) :
     QListWidgetItem *item5 =new QListWidgetItem(QIcon(""),"gestion des Contrats");
     ui->listWidget->addItem(item5);
     ui->listWidget->setCurrentItem(item);
-    ui->tableView->setModel(G.afficher());
-    ui->comboBox->setModel(G.comboBoxAgence());
-    ui->label_12->setText(G.calculchiffreaffaire()); //chiffre d'affaire
-    ui->lineEdit_6->clear();
-    ui->lineEdit_8->clear();
-    ui->lineEdit_26->clear();
-    ui->lineEdit_27->clear();
+    ui->tableagence->setModel(G.afficher());
+    ui->comboBoxidagence->setModel(G.comboBoxAgence());
+    ui->estimationchiffre->setText(G.calculchiffreaffaire()); //chiffre d'affaire
+    ui->nomagence->clear();
+    ui->ville->clear();
+    ui->adresseagence->clear();
+    ui->numtelagence->clear();
 
 }
 
 newWindow::~newWindow()
 {
     delete ui;
-}
-
-void newWindow::on_pushButton_2_clicked()//boutton recherche NON FONCTIONEL
-{
-
 }
 
 void newWindow::on_listWidget_itemClicked(QListWidgetItem *item)//side bar
@@ -93,17 +88,17 @@ void newWindow::on_listWidget_itemClicked(QListWidgetItem *item)//side bar
         }
 }
 
-void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
+void newWindow::on_ajouterA_clicked()//boutton ajouter avec controle saisi
 {
-        QString numAgencestring=ui->lineEdit_5->text();
-        int numAgence=ui->lineEdit_5->text().toInt();
-        QString nomAgence=ui->lineEdit_6->text();
-        QString ville=ui->lineEdit_8->text();
-        QString adresseA=ui->lineEdit_26->text();
-        QString numtelA=ui->lineEdit_27->text();
+        QString numAgencestring=ui->numagence->text();
+        int numAgence=ui->numagence->text().toInt();
+        QString nomAgence=ui->nomagence->text();
+        QString ville=ui->ville->text();
+        QString adresseA=ui->adresseagence->text();
+        QString numtelA=ui->numtelagence->text();
      GestionAgence A(nomAgence,ville,adresseA,numtelA,numAgence);
      int flag1 = 0;
-     if(ui->lineEdit_6->text().isEmpty())
+     if(ui->nomagence->text().isEmpty())
          {
              flag1=1;
          }
@@ -112,12 +107,12 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
      {
          if(    (((nomAgence[i] >= 'A') && (nomAgence[i] <= 'Z')) || ((nomAgence[i] >= 'a') && (nomAgence[i] <= 'z'))) || (nomAgence[i] == ' '))
            {
-             ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid green}");
+             ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
            }
          else
          {
-             ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid red}");
+             ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid red}");
              flag1 = 1;
 
              break;
@@ -125,7 +120,7 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
      }}
 
      int flag2 = 0;
-     if(ui->lineEdit_5->text().isEmpty())
+     if(ui->numagence->text().isEmpty())
          {
              flag2=1;
          }
@@ -134,12 +129,12 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
      {
          if((numAgencestring[i] >= '0') && (numAgencestring[i] <= '9') )
            {
-             ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid green}");
+             ui->numagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
            }
          else
          {
-             ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid red}");
+             ui->numagence->setStyleSheet("QLineEdit{border: 2px solid red}");
              flag2 = 1;
 
              break;
@@ -149,7 +144,7 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
 
      }
      int flag3 = 0;
-    if(ui->lineEdit_27->text().isEmpty())
+    if(ui->numtelagence->text().isEmpty())
     {
         flag3=1;
     }
@@ -159,12 +154,12 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
     {
         if((((numtelA[i] >= '0') && (numtelA[i] <= '9')) && (numtelA.length()==8)) )
           {
-            ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid red}");
             flag3 = 1;
         }
     }
@@ -172,7 +167,7 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
 
 
      int flag4 = 0;
-     if (ui->lineEdit_26->text().isEmpty())
+     if (ui->adresseagence->text().isEmpty())
   {
          flag4=1;
   }
@@ -182,12 +177,12 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
              {
                  if((((((adresseA[i] >= 'A') && (adresseA[i] <= 'Z')) ||( ((adresseA[i] >= 'a') && (adresseA[i] <= 'z')) || ((adresseA[i] >= '0') && (adresseA[i] <= '9'))) || (adresseA[i] == ' ')) || (adresseA[i] == '/')) || (adresseA[i] == '\'')) || (adresseA[i] == '.') )
                    {
-                     ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid green}");
+                     ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
                    }
                  else
                  {
-                     ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid red}");
+                     ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid red}");
                      flag4 = 1;
 
                      break;
@@ -196,7 +191,7 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
 
 }
     int  flag5=0;
-     if(ui->lineEdit_8->text().isEmpty())
+     if(ui->ville->text().isEmpty())
      {
          flag5=1;
      }
@@ -206,12 +201,12 @@ void newWindow::on_pushButton_4_clicked()//boutton ajouter avec controle saisi
          {
              if(    (((ville[i] >= 'A') && (ville[i] <= 'Z')) || ((ville[i] >= 'a') && (ville[i] <= 'z'))) || (ville[i] == ' '))
                {
-                 ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid green}");
+                 ui->ville->setStyleSheet("QLineEdit{border: 2px solid green}");
 
                }
              else
              {
-                 ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid red}");
+                 ui->ville->setStyleSheet("QLineEdit{border: 2px solid red}");
                  flag5 = 1;
 
                  break;
@@ -235,14 +230,14 @@ else{
     { QMessageBox::warning(this," il existe deja","Click Cancel to exit."); }
     else{
         bool test=A.ajouter();
-        ui->lineEdit_5->clear();
-        ui->lineEdit_6->clear();
-        ui->lineEdit_8->clear();
-        ui->lineEdit_26->clear();
-        ui->lineEdit_27->clear();
-        ui->tableView->setModel(G.afficher());
-        ui->comboBox->setModel(G.comboBoxAgence());
-        ui->label_12->setText(G.calculchiffreaffaire());
+        ui->numagence->clear();
+        ui->nomagence->clear();
+        ui->ville->clear();
+        ui->adresseagence->clear();
+        ui->numtelagence->clear();
+        ui->tableagence->setModel(G.afficher());
+        ui->comboBoxidagence->setModel(G.comboBoxAgence());
+        ui->estimationchiffre->setText(G.calculchiffreaffaire());
         if(test){
              QMessageBox::warning(this,"ajout effectue","Click Cancel to exit.");
         }
@@ -254,13 +249,13 @@ else{
 }
 }
 
-void newWindow::on_pushButton_6_clicked()// boutton supprimer
+void newWindow::on_supprimeragence_clicked()// boutton supprimer
 {
-    int numAgence=ui->comboBox->currentText().toInt();
+    int numAgence=ui->comboBoxidagence->currentText().toInt();
 
     bool test=G.supprimer(numAgence);
-        ui->tableView->setModel(G.afficher());
-        ui->comboBox->setModel(G.comboBoxAgence());
+        ui->tableagence->setModel(G.afficher());
+        ui->comboBoxidagence->setModel(G.comboBoxAgence());
 
     if(test){
 
@@ -274,24 +269,24 @@ void newWindow::on_pushButton_6_clicked()// boutton supprimer
 
 }
 
-void newWindow::on_pushButton_5_clicked()// ouvrir la modification (page ajouter)
+void newWindow::on_gomodiferA_clicked()// ouvrir la modification (page ajouter)
 {
-ui->tabWidget_2->setCurrentIndex(0);
-ui->pushButton_7->setEnabled(true);
-ui->lineEdit_5->setText(ui->comboBox->currentText());
-ui->lineEdit_5->setEnabled(false);
+ui->agencetabwidget->setCurrentIndex(0);
+ui->modifierA->setEnabled(true);
+ui->numagence->setText(ui->comboBoxidagence->currentText());
+ui->numagence->setEnabled(false);
 GestionAgence g;
-QSqlQueryModel * model=g.testexist(ui->lineEdit_5->text());
-ui->lineEdit_6->setText(model->record(0).value(1).toString());
-ui->lineEdit_8->setText(model->record(0).value(2).toString());
-ui->lineEdit_27->setText(model->record(0).value(3).toString());
-ui->lineEdit_26->setText(model->record(0).value(4).toString());
-ui->label_12->setText(G.calculchiffreaffaire());
+QSqlQueryModel * model=g.testexist(ui->numagence->text());
+ui->nomagence->setText(model->record(0).value(1).toString());
+ui->ville->setText(model->record(0).value(2).toString());
+ui->numtelagence->setText(model->record(0).value(3).toString());
+ui->adresseagence->setText(model->record(0).value(4).toString());
+ui->estimationchiffre->setText(G.calculchiffreaffaire());
 }
 
-void newWindow::on_lineEdit_5_textEdited(const QString &str) //numagence
+void newWindow::on_numagence_textEdited(const QString &str) //numagence
 {
-    if(ui->lineEdit_5->text().isEmpty())
+    if(ui->numagence->text().isEmpty())
         {
             QMessageBox::warning(this,"Check","Wrong Input!");
         }
@@ -302,30 +297,30 @@ void newWindow::on_lineEdit_5_textEdited(const QString &str) //numagence
     {
         if((str[i] >= '0') && (str[i] <= '9') )
           {
-            ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->numagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->numagence->setStyleSheet("QLineEdit{border: 2px solid red}");
             break;
         }
     }
     }
 }
 
-void newWindow::on_lineEdit_6_textEdited(const QString &str) //nomagence
+void newWindow::on_nomagence_textEdited(const QString &str) //nomagence
 {
             for(int i = 0; i < str.length(); ++i)
             {
                 if(    (((str[i] >= 'A') && (str[i] <= 'Z')) || ((str[i] >= 'a') && (str[i] <= 'z'))) || (str[i] == ' '))
                   {
-                    ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid green}");
+                    ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
                   }
                 else
                 {
-                    ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid red}");
+                    ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid red}");
                     break;
                 }
             }
@@ -334,110 +329,110 @@ void newWindow::on_lineEdit_6_textEdited(const QString &str) //nomagence
 
 }
 
-void newWindow::on_lineEdit_27_textEdited(const QString &str) //tel
+void newWindow::on_numtelagence_textEdited(const QString &str) //tel
 {
     for(int i = 0; i < str.length(); ++i)
     {
         if((((str[i] >= '0') && (str[i] <= '9')) && (str.length()==8)) )
           {
-            ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid red}");
         }
     }
 
 }
 
-void newWindow::on_lineEdit_26_textEdited(const QString &str) //adresse
+void newWindow::on_adresseagence_textEdited(const QString &str) //adresse
 {
     for(int i = 0; i < str.length(); ++i)
     {
         if((((((str[i] >= 'A') && (str[i] <= 'Z')) ||( ((str[i] >= 'a') && (str[i] <= 'z')) || ((str[i] >= '0') && (str[i] <= '9'))) || (str[i] == ' ')) || (str[i] == '/')) || (str[i] == '\'')) || (str[i] == '.') )
           {
-            ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid red}");
 
             break;
         }
     }
 }
 
-void newWindow::on_lineEdit_8_textEdited(const QString &str) //ville
+void newWindow::on_ville_textEdited(const QString &str) //ville
 {
     for(int i = 0; i < str.length(); ++i)
     {
         if(    (((str[i] >= 'A') && (str[i] <= 'Z')) || ((str[i] >= 'a') && (str[i] <= 'z'))) || (str[i] == ' '))
           {
-            ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->ville->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->ville->setStyleSheet("QLineEdit{border: 2px solid red}");
             break;
         }
     }
 }
 
-void newWindow::on_pushButton_3_clicked()//refresh
+void newWindow::on_refreshA_clicked()//refresh
 {
-    ui->tableView->setModel(G.afficher());
-    ui->comboBox->setModel(G.comboBoxAgence());//numagence
-    ui->comboBox->setCurrentIndex(0); //numagence
-    ui->comboBox_2->setCurrentIndex(0); //tri
-    ui->label_12->setText(G.calculchiffreaffaire());//calcul chiffreaffaire
+    ui->tableagence->setModel(G.afficher());
+    ui->comboBoxidagence->setModel(G.comboBoxAgence());//numagence
+    ui->comboBoxidagence->setCurrentIndex(0); //numagence
+    ui->comboBoxtrieagence->setCurrentIndex(0); //tri
+    ui->estimationchiffre->setText(G.calculchiffreaffaire());//calcul chiffreaffaire
 
 
-    ui->lineEdit->clear();
+    ui->rechercheragence->clear();
 }
 
-void newWindow::on_lineEdit_textEdited(const QString &str)//recherche
+void newWindow::on_rechercheragence_textEdited(const QString &str)//recherche
 {
-    ui->tableView->setModel(G.recherche(str));
+    ui->tableagence->setModel(G.recherche(str));
 }
 
-void newWindow::on_comboBox_2_currentIndexChanged(int index)//tri
+void newWindow::on_comboBoxtrieagence_currentIndexChanged(int index)//tri
 {
     QString t;
     if (index==0)
     {
-        ui->tableView->setModel(G.afficher());
+        ui->tableagence->setModel(G.afficher());
     }
     else if(index==1)
     {
         t="numagence";
-        ui->tableView->setModel(G.trier(t));
+        ui->tableagence->setModel(G.trier(t));
     }
     else if(index==2)
     {
         t="nomagence";
-        ui->tableView->setModel(G.trier(t));
+        ui->tableagence->setModel(G.trier(t));
     }
     else if(index==3)
     {
         t="ville";
-        ui->tableView->setModel(G.trier(t));
+        ui->tableagence->setModel(G.trier(t));
     }
 }
 
-void newWindow::on_pushButton_7_clicked() //button modifier (page ajouter)
+void newWindow::on_modifierA_clicked() //button modifier (page ajouter)
 {
-    QString numAgencestring=ui->lineEdit_5->text();
-    int numAgence=ui->lineEdit_5->text().toInt();
-    QString nomAgence=ui->lineEdit_6->text();
-    QString ville=ui->lineEdit_8->text();
-    QString adresseA=ui->lineEdit_26->text();
-    QString numtelA=ui->lineEdit_27->text();
+    QString numAgencestring=ui->numagence->text();
+    int numAgence=ui->numagence->text().toInt();
+    QString nomAgence=ui->nomagence->text();
+    QString ville=ui->ville->text();
+    QString adresseA=ui->adresseagence->text();
+    QString numtelA=ui->numtelagence->text();
     GestionAgence A;
 int flag1 = 0;
-if(ui->lineEdit_6->text().isEmpty())
+if(ui->nomagence->text().isEmpty())
      {
          flag1=1;
      }
@@ -446,12 +441,12 @@ else{
  {
      if(    (((nomAgence[i] >= 'A') && (nomAgence[i] <= 'Z')) || ((nomAgence[i] >= 'a') && (nomAgence[i] <= 'z'))) || (nomAgence[i] == ' '))
        {
-         ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid green}");
+         ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
        }
      else
      {
-         ui->lineEdit_6->setStyleSheet("QLineEdit{border: 2px solid red}");
+         ui->nomagence->setStyleSheet("QLineEdit{border: 2px solid red}");
          flag1 = 1;
 
          break;
@@ -459,7 +454,7 @@ else{
  }}
 
 int flag2 = 0;
-if(ui->lineEdit_5->text().isEmpty())
+if(ui->numagence->text().isEmpty())
      {
          flag2=1;
      }
@@ -468,12 +463,12 @@ else{
  {
      if((numAgencestring[i] >= '0') && (numAgencestring[i] <= '9') )
        {
-         ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid green}");
+         ui->numagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
        }
      else
      {
-         ui->lineEdit_5->setStyleSheet("QLineEdit{border: 2px solid red}");
+         ui->numagence->setStyleSheet("QLineEdit{border: 2px solid red}");
          flag2 = 1;
 
          break;
@@ -484,7 +479,7 @@ else{
  }
 
 int flag3 = 0;
-if(ui->lineEdit_27->text().isEmpty())
+if(ui->numtelagence->text().isEmpty())
 {
     flag3=1;
 }
@@ -494,19 +489,19 @@ for(int i = 1; i < numtelA.length(); ++i)
 {
     if((((numtelA[i] >= '0') && (numtelA[i] <= '9')) && (numtelA.length()==8)) )
       {
-        ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid green}");
+        ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
       }
     else
     {
-        ui->lineEdit_27->setStyleSheet("QLineEdit{border: 2px solid red}");
+        ui->numtelagence->setStyleSheet("QLineEdit{border: 2px solid red}");
         flag3 = 1;
     }
 }
 }
 
 int flag4 = 0;
-if (ui->lineEdit_26->text().isEmpty())
+if (ui->adresseagence->text().isEmpty())
 {
      flag4=1;
 }
@@ -516,12 +511,12 @@ else{
          {
              if((((((adresseA[i] >= 'A') && (adresseA[i] <= 'Z')) ||( ((adresseA[i] >= 'a') && (adresseA[i] <= 'z')) || ((adresseA[i] >= '0') && (adresseA[i] <= '9'))) || (adresseA[i] == ' ')) || (adresseA[i] == '/')) || (adresseA[i] == '\'')) || (adresseA[i] == '.') )
                {
-                 ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid green}");
+                 ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid green}");
 
                }
              else
              {
-                 ui->lineEdit_26->setStyleSheet("QLineEdit{border: 2px solid red}");
+                 ui->adresseagence->setStyleSheet("QLineEdit{border: 2px solid red}");
                  flag4 = 1;
 
                  break;
@@ -531,7 +526,7 @@ else{
 }
 
 int  flag5=0;
-if(ui->lineEdit_8->text().isEmpty())
+if(ui->ville->text().isEmpty())
  {
      flag5=1;
  }
@@ -541,12 +536,12 @@ else
      {
          if(    (((ville[i] >= 'A') && (ville[i] <= 'Z')) || ((ville[i] >= 'a') && (ville[i] <= 'z'))) || (ville[i] == ' '))
            {
-             ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid green}");
+             ui->ville->setStyleSheet("QLineEdit{border: 2px solid green}");
 
            }
          else
          {
-             ui->lineEdit_8->setStyleSheet("QLineEdit{border: 2px solid red}");
+             ui->ville->setStyleSheet("QLineEdit{border: 2px solid red}");
              flag5 = 1;
 
              break;
@@ -570,16 +565,16 @@ else{
 
     if(test){
          QMessageBox::warning(this,"modification effectue","Click Cancel to exit.");
-         ui->lineEdit_5->clear();
-         ui->lineEdit_6->clear();
-         ui->lineEdit_8->clear();
-         ui->lineEdit_26->clear();
-         ui->lineEdit_27->clear();
-         ui->lineEdit_5->setEnabled(true);
-         ui->pushButton_7->setEnabled(false);
-         ui->tableView->setModel(G.afficher()); //si ilya une modification il va afficher
-         ui->comboBox->setModel(G.comboBoxAgence());//refresh combobox
-         ui->label_12->setText(G.calculchiffreaffaire());
+         ui->numagence->clear();
+         ui->nomagence->clear();
+         ui->ville->clear();
+         ui->adresseagence->clear();
+         ui->numtelagence->clear();
+         ui->numagence->setEnabled(true);
+         ui->modifierA->setEnabled(false);
+         ui->tableagence->setModel(G.afficher()); //si ilya une modification il va afficher
+         ui->comboBoxidagence->setModel(G.comboBoxAgence());//refresh combobox
+         ui->estimationchiffre->setText(G.calculchiffreaffaire());
     }
     else{
           QMessageBox::warning(this,"modification non effectue","Click Cancel to exit.");
@@ -587,7 +582,7 @@ else{
 }
 }
 
-void newWindow::on_pushButton_8_clicked() //button chat
+void newWindow::on_chatbox_clicked() //button chat
 {
     widget = new Widget(this);
     widget->show();
