@@ -1,4 +1,3 @@
-
 #include "newwindow.h"
 #include "ui_newwindow.h"
 #include "gestionagence.h"
