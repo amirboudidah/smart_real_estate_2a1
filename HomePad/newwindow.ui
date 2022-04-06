@@ -1292,13 +1292,13 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
         <string>afficher</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QGroupBox" name="affichecontrat">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1310,7 +1310,7 @@
         <property name="title">
          <string>Les Contrats:</string>
         </property>
-        <widget class="QTableView" name="tableView">
+        <widget class="QTableView" name="tablecontrats">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -1320,7 +1320,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_29">
+        <widget class="QPushButton" name="gomodifiercontrat">
          <property name="geometry">
           <rect>
            <x>200</x>
@@ -1336,7 +1336,7 @@
           <string>Modifier</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_30">
+        <widget class="QPushButton" name="supprimercontrat">
          <property name="geometry">
           <rect>
            <x>200</x>
@@ -1352,7 +1352,7 @@
           <string>Supprimer</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_16">
+        <widget class="QPushButton" name="exportercontrat">
          <property name="geometry">
           <rect>
            <x>360</x>
@@ -1365,7 +1365,7 @@
           <string>exporter</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_17">
+        <widget class="QPushButton" name="voirlerestecontrat">
          <property name="geometry">
           <rect>
            <x>360</x>
@@ -1389,16 +1389,16 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <layout class="QHBoxLayout" name="horizontalLayoutrecherchecontrat">
             <item>
-             <widget class="QLineEdit" name="lineEdit_10">
+             <widget class="QLineEdit" name="recherchecontrat">
               <property name="placeholderText">
                <string>recherche</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_18">
+             <widget class="QPushButton" name="buttonrecherchecontrat">
               <property name="styleSheet">
                <string notr="true"/>
               </property>
@@ -1414,7 +1414,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_19">
+           <widget class="QPushButton" name="buttonrefreshcontrat">
             <property name="text">
              <string/>
             </property>
@@ -1431,16 +1431,16 @@
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <layout class="QHBoxLayout" name="horizontalLayouttriecontrat">
             <item>
-             <widget class="QLabel" name="label_46">
+             <widget class="QLabel" name="labeltriecontrat">
               <property name="text">
                <string>Trier par :</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_2">
+             <widget class="QComboBox" name="triercontrat">
               <item>
                <property name="text">
                 <string>None</string>
@@ -1483,14 +1483,14 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <widget class="QLabel" name="label_45">
+           <widget class="QLabel" name="labelnumcontrat">
             <property name="text">
              <string>Num du contrat :</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="comboBoxnumcontrat"/>
           </item>
          </layout>
         </widget>
@@ -1500,7 +1500,7 @@
        <attribute name="title">
         <string>inserer</string>
        </attribute>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="labelidclientcontrat">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -1513,7 +1513,7 @@
          <string>id client</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_11">
+       <widget class="QLineEdit" name="numcontrat">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -1532,7 +1532,7 @@
          <string notr="true"/>
         </property>
        </widget>
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="labelnumcontrat2">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -1545,7 +1545,7 @@
          <string>numcontrat</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="labeltypecontrat">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -1558,7 +1558,7 @@
          <string>Type du contrat:</string>
         </property>
        </widget>
-       <widget class="QRadioButton" name="radioButton_5">
+       <widget class="QRadioButton" name="radioButtonachatcontrat">
         <property name="geometry">
          <rect>
           <x>60</x>
@@ -1571,7 +1571,7 @@
          <string>Achat</string>
         </property>
        </widget>
-       <widget class="QRadioButton" name="radioButton_6">
+       <widget class="QRadioButton" name="radioButtoncontratvendre">
         <property name="geometry">
          <rect>
           <x>60</x>
@@ -1584,7 +1584,7 @@
          <string>Vendre</string>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEdit_3">
+       <widget class="QDateEdit" name="dateEditcontrat">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -1597,7 +1597,7 @@
          <string notr="true"/>
         </property>
        </widget>
-       <widget class="QLabel" name="label_16">
+       <widget class="QLabel" name="labeldatecontrat">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -1610,7 +1610,7 @@
          <string>Date :</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_26">
+       <widget class="QPushButton" name="buttonanulcontrat">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -1626,7 +1626,7 @@
          <string>Annuler</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_27">
+       <widget class="QPushButton" name="pushButtonajoutcontrat">
         <property name="geometry">
          <rect>
           <x>260</x>
@@ -1642,7 +1642,7 @@
          <string>Ajouter</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="textEdit_4">
+       <widget class="QTextEdit" name="textEditcontenucontrat">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -1670,23 +1670,23 @@
           <height>30</height>
          </rect>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="horizontalLayoutinserertemplatecontrat">
          <item>
-          <widget class="QLabel" name="label_17">
+          <widget class="QLabel" name="labelinserercontenucontrat">
            <property name="text">
             <string>Inserer le contenu</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_18">
+          <widget class="QLabel" name="labeloucontrat">
            <property name="text">
             <string>OU</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_28">
+          <widget class="QPushButton" name="pushButtonchoisirtemplatecontrat">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -1697,7 +1697,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QPushButton" name="pushButton_20">
+       <widget class="QPushButton" name="pushButtonmodifiercontrat">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -1713,7 +1713,7 @@
          <string>modifier</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox_3">
+       <widget class="QComboBox" name="comboBoxidclientcontrat">
         <property name="geometry">
          <rect>
           <x>140</x>

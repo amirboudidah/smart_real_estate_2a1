@@ -33,9 +33,9 @@ newWindow::newWindow(QWidget *parent) :
     QListWidgetItem *item5 =new QListWidgetItem(QIcon(""),"gestion des Contrats");
     ui->listWidget->addItem(item5);
     ui->listWidget->setCurrentItem(item);
-    ui->tableView->setModel(cont.afficher());
-    ui->comboBox->setModel(cont.comboboxcontrat());
-    ui->comboBox_3->setModel(cont.employespourcontrat());
+    ui->tablecontrats->setModel(cont.afficher());
+    ui->comboBoxnumcontrat->setModel(cont.comboboxcontrat());
+    ui->comboBoxidclientcontrat->setModel(cont.employespourcontrat());
 }
 
 newWindow::~newWindow()
@@ -87,25 +87,25 @@ void newWindow::on_listWidget_itemClicked(QListWidgetItem *item)
         }
 }
 
-void newWindow::on_pushButton_27_clicked()//ajout
+void newWindow::on_pushButtonajoutcontrat_clicked()//ajout
 {
     bool test=false;
     QString typec;
-    QString numcontratstring=ui->lineEdit_11->text();
-    QString cinstring=ui->comboBox_3->currentText();
-    int numcontrat=ui->lineEdit_11->text().toInt();
-    int cin=ui->comboBox_3->currentText().toInt();
-    QString contenu=ui->textEdit_4->toPlainText();
-    if(ui->radioButton_5->isChecked())
+    QString numcontratstring=ui->numcontrat->text();
+    QString cinstring=ui->comboBoxidclientcontrat->currentText();
+    int numcontrat=ui->numcontrat->text().toInt();
+    int cin=ui->comboBoxidclientcontrat->currentText().toInt();
+    QString contenu=ui->textEditcontenucontrat->toPlainText();
+    if(ui->radioButtonachatcontrat->isChecked())
         typec="achat";
     else
         typec="vendre";
     QString imageqr="qrcode_"+numcontratstring+".svg";
-    QString datec=ui->dateEdit_3->date().toString("dd/MM/yyyy");
+    QString datec=ui->dateEditcontrat->date().toString("dd/MM/yyyy");
     gestioncontrats c(numcontrat,cin,typec,contenu,imageqr,datec);
     int flag0=0;
 
-    if(ui->radioButton_5->isChecked() || ui->radioButton_6->isChecked())
+    if(ui->radioButtonachatcontrat->isChecked() || ui->radioButtoncontratvendre->isChecked())
     {
         flag0=0;
 
@@ -124,11 +124,11 @@ void newWindow::on_pushButton_27_clicked()//ajout
         {
             if((numcontratstring[i] >= '0') && (numcontratstring[i] <= '9') )
               {
-                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid green}");
+                ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid green}");
               }
             else
             {
-                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid red}");
+                ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid red}");
                 flag1 = 1;
 
                 break;
@@ -145,7 +145,7 @@ void newWindow::on_pushButton_27_clicked()//ajout
 
     int flag3=0;
 
-    if(ui->textEdit_4->document()->isEmpty())
+    if(ui->textEditcontenucontrat->document()->isEmpty())
     {
         flag3=1;
     }
@@ -164,18 +164,18 @@ void newWindow::on_pushButton_27_clicked()//ajout
             QMessageBox::warning(this,"existe","click cancel to exit.");
         }
         else{
-            QString code= ui->lineEdit_11->text()+"/"+ui->comboBox_3->currentText();
-            c.writeqrcode(code,ui->lineEdit_11->text());
+            QString code= ui->numcontrat->text()+"/"+ui->comboBoxidclientcontrat->currentText();
+            c.writeqrcode(code,ui->numcontrat->text());
         test=c.ajouter();
 
-    ui->comboBox->setModel(cont.comboboxcontrat());
-    ui->tableView->setModel(cont.afficher());//MISE AJOUR
-    ui->lineEdit_11->clear();
-    ui->textEdit_4->clear();
-    ui->radioButton_5->setAutoExclusive(false);
-    ui->radioButton_5->setChecked(false);
-    ui->radioButton_5->setAutoExclusive(true);
-    ui->dateEdit_3->clear();
+    ui->comboBoxnumcontrat->setModel(cont.comboboxcontrat());
+    ui->tablecontrats->setModel(cont.afficher());//MISE AJOUR
+    ui->numcontrat->clear();
+    ui->textEditcontenucontrat->clear();
+    ui->radioButtonachatcontrat->setAutoExclusive(false);
+    ui->radioButtonachatcontrat->setChecked(false);
+    ui->radioButtonachatcontrat->setAutoExclusive(true);
+    ui->dateEditcontrat->clear();
     if(test){
             QMessageBox::warning(this,"ajout effectue","click cancel to exit.");
 
@@ -186,26 +186,26 @@ void newWindow::on_pushButton_27_clicked()//ajout
 }
 }
 
-void newWindow::on_pushButton_30_clicked()
+void newWindow::on_supprimercontrat_clicked()
 {
-    if(ui->comboBox->count()==0)
+    if(ui->comboBoxnumcontrat->count()==0)
     {
         QMessageBox::warning(this,"WARNING","Rien a supprimer!");
     }
     else
     {
-    int numcontrat=ui->comboBox->currentText().toInt();
+    int numcontrat=ui->comboBoxnumcontrat->currentText().toInt();
     bool test=cont.supprimer(numcontrat);
-    QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contrats/Contrat_"+ui->comboBox->currentText()+".pdf");
-    QFile file1("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+ui->comboBox->currentText()+".png");
+    QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contrats/Contrat_"+ui->comboBoxnumcontrat->currentText()+".pdf");
+    QFile file1("C:/Users/amirb/Desktop/GitHub/HomePad/qrcodes/qrcode_"+ui->comboBoxnumcontrat->currentText()+".png");
     file1.remove();
-    QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBox->currentText()+" a ete supprimer \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
-    QString subject="Suppression du contrat numero "+ui->comboBox->currentText();
-    cont.envoiemail(mailtext,subject,ui->comboBox->currentText());
+    QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBoxnumcontrat->currentText()+" a ete supprimer \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
+    QString subject="Suppression du contrat numero "+ui->comboBoxnumcontrat->currentText();
+    cont.envoiemail(mailtext,subject,ui->comboBoxnumcontrat->currentText());
     file.remove();
 
-    ui->tableView->setModel(cont.afficher());
-    ui->comboBox->setModel(cont.comboboxcontrat());
+    ui->tablecontrats->setModel(cont.afficher());
+    ui->comboBoxnumcontrat->setModel(cont.comboboxcontrat());
     if(test){
             QMessageBox::warning(this,"suppresion effectue","click cancel to exit.");
 
@@ -216,7 +216,7 @@ void newWindow::on_pushButton_30_clicked()
     }
 }
 
-void newWindow::on_lineEdit_11_textEdited(const QString &str)
+void newWindow::on_numcontrat_textEdited(const QString &str)
 {
     int flag = 0;
 
@@ -224,12 +224,12 @@ void newWindow::on_lineEdit_11_textEdited(const QString &str)
     {
         if((str[i] >= '0') && (str[i] <= '9') )
           {
-            ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid green}");
+            ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid green}");
 
           }
         else
         {
-            ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid red}");
+            ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid red}");
             flag = 1;
 
             break;
@@ -237,12 +237,10 @@ void newWindow::on_lineEdit_11_textEdited(const QString &str)
     }
 }
 
-
-
-void newWindow::on_pushButton_29_clicked()
+void newWindow::on_gomodifiercontrat_clicked()
 {
     gestioncontrats c;
-    if(ui->comboBox->currentText().count()==0)
+    if(ui->comboBoxnumcontrat->currentText().count()==0)
     {
         QMessageBox::warning(this,"Warning","Rien a modifier!");
     }
@@ -250,67 +248,67 @@ void newWindow::on_pushButton_29_clicked()
     {
 
         ui->tabWidget->setCurrentIndex(1);
-        ui->pushButton_20->setEnabled(true);
-        ui->lineEdit_11->setText(ui->comboBox->currentText());
-        ui->lineEdit_11->setEnabled(false);
-        QSqlQueryModel * model=c.testexist(ui->lineEdit_11->text());
-        ui->textEdit_4->setText(model->record(0).value(2).toString());
+        ui->pushButtonmodifiercontrat->setEnabled(true);
+        ui->numcontrat->setText(ui->comboBoxnumcontrat->currentText());
+        ui->numcontrat->setEnabled(false);
+        QSqlQueryModel * model=c.testexist(ui->numcontrat->text());
+        ui->textEditcontenucontrat->setText(model->record(0).value(2).toString());
         if(model->record(0).value(1).toString()== "achat")
         {
-            ui->radioButton_5->setChecked(true);
+            ui->radioButtonachatcontrat->setChecked(true);
         }
         else if(model->record(0).value(1).toString()== "vendre")
         {
-            ui->radioButton_6->setChecked(true);
+            ui->radioButtoncontratvendre->setChecked(true);
         }
-        ui->dateEdit_3->setDate(model->record(0).value(2).toDate());
+        ui->dateEditcontrat->setDate(model->record(0).value(2).toDate());
 
     }
 }
 
-void newWindow::on_pushButton_19_clicked()
+void newWindow::on_buttonrefreshcontrat_clicked()
 {
-    ui->comboBox->setModel(cont.comboboxcontrat());
-    ui->tableView->setModel(cont.afficher());//MISE AJOUR
-    ui->comboBox_2->setCurrentIndex(0);
-    ui->comboBox->setCurrentIndex(0);
-    ui->comboBox_3->setCurrentIndex(0);
-    ui->lineEdit_10->clear();
+    ui->comboBoxnumcontrat->setModel(cont.comboboxcontrat());
+    ui->tablecontrats->setModel(cont.afficher());//MISE AJOUR
+    ui->triercontrat->setCurrentIndex(0);
+    ui->comboBoxnumcontrat->setCurrentIndex(0);
+    ui->comboBoxidclientcontrat->setCurrentIndex(0);
+    ui->recherchecontrat->clear();
 }
 
-void newWindow::on_comboBox_2_currentIndexChanged(int index)
+void newWindow::on_triercontrat_currentIndexChanged(int index)
 {
     QString typetri;
     if(index==0)
     {
-        ui->tableView->setModel(cont.afficher());
+        ui->tablecontrats->setModel(cont.afficher());
     }
     else if(index==1)
     {
         typetri="numcontrat";
-        ui->tableView->setModel(cont.trier(typetri));
+        ui->tablecontrats->setModel(cont.trier(typetri));
     }
     else if(index==2)
     {
         typetri="datec";
-        ui->tableView->setModel(cont.trier(typetri));
+        ui->tablecontrats->setModel(cont.trier(typetri));
     }
     else if(index==3)
     {
         typetri="cin";
-        ui->tableView->setModel(cont.trier(typetri));
+        ui->tablecontrats->setModel(cont.trier(typetri));
     }
     else if(index==4)
     {
         typetri="typec";
-        ui->tableView->setModel(cont.trier(typetri));
+        ui->tablecontrats->setModel(cont.trier(typetri));
     }
 
 
 
 }
 
-void newWindow::on_pushButton_28_clicked()
+void newWindow::on_pushButtonchoisirtemplatecontrat_clicked()
 {
     QString filename=QFileDialog::getOpenFileName(this,
                                                  tr("open file"),
@@ -320,77 +318,77 @@ void newWindow::on_pushButton_28_clicked()
     QFile file(filename);
     file.open(QFile::ReadOnly);
     QTextStream in(&file);
-    ui->textEdit_4->setText(in.readAll());
+    ui->textEditcontenucontrat->setText(in.readAll());
 }
 
-void newWindow::on_pushButton_17_clicked()
+void newWindow::on_voirlerestecontrat_clicked()
 {
-    if(ui->comboBox->count()==0)
+    if(ui->comboBoxnumcontrat->count()==0)
     {
         QMessageBox::warning(this,"WARNING","Rien a voir!");
     }
     else
     {
     gestioncontrats c;
-    c.setNumcontrat(ui->comboBox->currentText().toInt());
+    c.setNumcontrat(ui->comboBoxnumcontrat->currentText().toInt());
     content= new contenu(this);
     content->setconrat(c);
     content->show();
     }
 }
 
-void newWindow::on_pushButton_16_clicked()
+void newWindow::on_exportercontrat_clicked()
 {
-    if(ui->comboBox->count()==0)
+    if(ui->comboBoxnumcontrat->count()==0)
     {
         QMessageBox::warning(this,"WARNING","Rien a exporter!");
     }
     else
     {
     gestioncontrats c;
-    c.writePdf(ui->comboBox->currentText());
+    c.writePdf(ui->comboBoxnumcontrat->currentText());
     }
 }
 
-void newWindow::on_pushButton_26_clicked()
+void newWindow::on_buttonanulcontrat_clicked()
 {
-    ui->lineEdit_11->clear();
-    ui->textEdit_4->clear();
-    ui->radioButton_5->setAutoExclusive(false);
-    ui->radioButton_5->setChecked(false);
-    ui->radioButton_5->setAutoExclusive(true);
-    ui->dateEdit_3->clear();
-    ui->lineEdit_11->setEnabled(true);
-    ui->pushButton_20->setEnabled(false);
+    ui->numcontrat->clear();
+    ui->textEditcontenucontrat->clear();
+    ui->radioButtonachatcontrat->setAutoExclusive(false);
+    ui->radioButtonachatcontrat->setChecked(false);
+    ui->radioButtonachatcontrat->setAutoExclusive(true);
+    ui->dateEditcontrat->clear();
+    ui->numcontrat->setEnabled(true);
+    ui->pushButtonmodifiercontrat->setEnabled(false);
 }
 
-void newWindow::on_lineEdit_10_textEdited(const QString &arg1)
+void newWindow::on_recherchecontrat_textEdited(const QString &arg1)
 {
-    ui->tableView->setModel(cont.recherche(ui->lineEdit_10->text()));
+    ui->tablecontrats->setModel(cont.recherche(ui->recherchecontrat->text()));
 }
 
-void newWindow::on_pushButton_20_clicked()
+void newWindow::on_pushButtonmodifiercontrat_clicked()
 {
-    QString numcontratstring =ui->lineEdit_11->text();
-    QString cinstring=ui->comboBox_3->currentText();
-    int numcontrat=ui->lineEdit_11->text().toInt();
-    int cin=ui->comboBox_3->currentText().toInt();
-    QString contenu=ui->textEdit_4->toPlainText();
+    QString numcontratstring =ui->numcontrat->text();
+    QString cinstring=ui->comboBoxidclientcontrat->currentText();
+    int numcontrat=ui->numcontrat->text().toInt();
+    int cin=ui->comboBoxidclientcontrat->currentText().toInt();
+    QString contenu=ui->textEditcontenucontrat->toPlainText();
     QString typec;
-    if(ui->radioButton_5->isChecked())
+    if(ui->radioButtonachatcontrat->isChecked())
     {
         typec="achat";
     }
-    else if(ui->radioButton_6->isChecked())
+    else if(ui->radioButtoncontratvendre->isChecked())
     {
         typec="vendre";
     }
-    QString datec=ui->dateEdit_3->date().toString("dd/MM/yyyy");
+    QString datec=ui->dateEditcontrat->date().toString("dd/MM/yyyy");
     QString imageqr="C:/Users/amirb/Desktop/GitHub/HomePad/building.png";
     gestioncontrats c;
     int flag0=0;
 
-    if(ui->radioButton_5->isChecked() || ui->radioButton_6->isChecked())
+    if(ui->radioButtonachatcontrat->isChecked() || ui->radioButtoncontratvendre->isChecked())
     {
         flag0=0;
 
@@ -409,11 +407,11 @@ void newWindow::on_pushButton_20_clicked()
         {
             if((numcontratstring[i] >= '0') && (numcontratstring[i] <= '9') )
               {
-                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid green}");
+                ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid green}");
               }
             else
             {
-                ui->lineEdit_11->setStyleSheet("QLineEdit{border: 2px solid red}");
+                ui->numcontrat->setStyleSheet("QLineEdit{border: 2px solid red}");
                 flag1 = 1;
 
                 break;
@@ -430,7 +428,7 @@ void newWindow::on_pushButton_20_clicked()
 
     int flag3=0;
 
-    if(ui->textEdit_4->document()->isEmpty())
+    if(ui->textEditcontenucontrat->document()->isEmpty())
     {
         flag3=1;
     }
@@ -449,19 +447,19 @@ void newWindow::on_pushButton_20_clicked()
     if(test){
             QMessageBox::warning(this,"modification effectue","click cancel to exit.");
 
-            QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBox->currentText()+" a ete Modifier \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
-            QString subject="Modification du contrat numero "+ui->comboBox->currentText();
-            cont.envoiemail(mailtext,subject,ui->comboBox->currentText());
-            ui->lineEdit_11->clear();
-            ui->textEdit_4->clear();
-            ui->radioButton_5->setAutoExclusive(false);
-            ui->radioButton_5->setChecked(false);
-            ui->radioButton_5->setAutoExclusive(true);
-            ui->dateEdit_3->clear();
-            ui->pushButton_20->setEnabled(false);
-            ui->lineEdit_11->setEnabled(true);
-            ui->tableView->setModel(cont.afficher());
-            ui->comboBox->setModel(cont.comboboxcontrat());
+            QString mailtext="Bonjour!\nVotre contrat numero "+ui->comboBoxnumcontrat->currentText()+" a ete Modifier \npour nous contacter utiliser ce mail: homepadinfo@gmail.com\nou bien sur ce numero telephone: 90322256";
+            QString subject="Modification du contrat numero "+ui->comboBoxnumcontrat->currentText();
+            cont.envoiemail(mailtext,subject,ui->comboBoxnumcontrat->currentText());
+            ui->numcontrat->clear();
+            ui->textEditcontenucontrat->clear();
+            ui->radioButtonachatcontrat->setAutoExclusive(false);
+            ui->radioButtonachatcontrat->setChecked(false);
+            ui->radioButtonachatcontrat->setAutoExclusive(true);
+            ui->dateEditcontrat->clear();
+            ui->pushButtonmodifiercontrat->setEnabled(false);
+            ui->numcontrat->setEnabled(true);
+            ui->tablecontrats->setModel(cont.afficher());
+            ui->comboBoxnumcontrat->setModel(cont.comboboxcontrat());
         }
         else
             QMessageBox::warning(this,"modification NON effectue","click cancel to exit.");
@@ -469,79 +467,81 @@ void newWindow::on_pushButton_20_clicked()
 }
 }
 
-void newWindow::on_radioButton_5_clicked()
+void newWindow::on_radioButtonachatcontrat_clicked()
 {
-    if(ui->textEdit_4->toPlainText()=="")
+    if(ui->textEditcontenucontrat->toPlainText()=="")
     {
     QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratachat.txt");
     file.open(QFile::ReadOnly);
     QTextStream in(&file);
-    QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+    QSqlQueryModel* model=cont.specificemploye(ui->comboBoxidclientcontrat->currentText());
     QString contents = QString::fromUtf8(file.readAll());
-    ui->textEdit_4->insertPlainText(contents);
-    QTextCursor position(ui->textEdit_4->document());
+    ui->textEditcontenucontrat->insertPlainText(contents);
+    QTextCursor position(ui->textEditcontenucontrat->document());
     position.setPosition(130);
-    ui->textEdit_4->setTextCursor(position);
-    ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+    ui->textEditcontenucontrat->setTextCursor(position);
+    ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(0).toString());
     position.setPosition(79);
-    ui->textEdit_4->setTextCursor(position);
-    ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
-    ui->textEdit_4->append(ui->dateEdit_3->text());
+    ui->textEditcontenucontrat->setTextCursor(position);
+    ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+    ui->textEditcontenucontrat->append(ui->dateEditcontrat->text());
     }
     else{
-        ui->textEdit_4->clear();
+        ui->textEditcontenucontrat->clear();
         QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratachat.txt");
         file.open(QFile::ReadOnly);
         QTextStream in(&file);
-        QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+        QSqlQueryModel* model=cont.specificemploye(ui->comboBoxidclientcontrat->currentText());
         QString contents = QString::fromUtf8(file.readAll());
-        ui->textEdit_4->insertPlainText(contents);
-        QTextCursor position(ui->textEdit_4->document());
+        ui->textEditcontenucontrat->insertPlainText(contents);
+        QTextCursor position(ui->textEditcontenucontrat->document());
         position.setPosition(81);
-        ui->textEdit_4->setTextCursor(position);
-        ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+        ui->textEditcontenucontrat->setTextCursor(position);
+        ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(0).toString());
         position.setPosition(51);
-        ui->textEdit_4->setTextCursor(position);
-        ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
-        ui->textEdit_4->append(ui->dateEdit_3->text());
+        ui->textEditcontenucontrat->setTextCursor(position);
+        ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+        ui->textEditcontenucontrat->append(ui->dateEditcontrat->text());
     }
 }
 
-void newWindow::on_radioButton_6_clicked()
+void newWindow::on_radioButtoncontratvendre_clicked()
 {
-    if(ui->textEdit_4->toPlainText()=="")
+    if(ui->textEditcontenucontrat->toPlainText()=="")
     {
     QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratvendre.txt");
     file.open(QFile::ReadOnly);
     QTextStream in(&file);
-    QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+    QSqlQueryModel* model=cont.specificemploye(ui->comboBoxidclientcontrat->currentText());
     QString contents = QString::fromUtf8(file.readAll());
-    ui->textEdit_4->insertPlainText(contents);
-    QTextCursor position(ui->textEdit_4->document());
+    ui->textEditcontenucontrat->insertPlainText(contents);
+    QTextCursor position(ui->textEditcontenucontrat->document());
     position.setPosition(113);
-    ui->textEdit_4->setTextCursor(position);
-    ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+    ui->textEditcontenucontrat->setTextCursor(position);
+    ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(0).toString());
     position.setPosition(79);
-    ui->textEdit_4->setTextCursor(position);
-    ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
-    ui->textEdit_4->append(ui->dateEdit_3->text());
+    ui->textEditcontenucontrat->setTextCursor(position);
+    ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+    ui->textEditcontenucontrat->append(ui->dateEditcontrat->text());
     }
     else
     {
-        ui->textEdit_4->clear();
+        ui->textEditcontenucontrat->clear();
         QFile file("C:/Users/amirb/Desktop/GitHub/HomePad/contratvente.txt");
         file.open(QFile::ReadOnly);
         QTextStream in(&file);
-        QSqlQueryModel* model=cont.specificemploye(ui->comboBox_3->currentText());
+        QSqlQueryModel* model=cont.specificemploye(ui->comboBoxidclientcontrat->currentText());
         QString contents = QString::fromUtf8(file.readAll());
-        ui->textEdit_4->insertPlainText(contents);
-        QTextCursor position(ui->textEdit_4->document());
+        ui->textEditcontenucontrat->insertPlainText(contents);
+        QTextCursor position(ui->textEditcontenucontrat->document());
         position.setPosition(107);
-        ui->textEdit_4->setTextCursor(position);
-        ui->textEdit_4->insertPlainText(" "+model->record(0).value(0).toString());
+        ui->textEditcontenucontrat->setTextCursor(position);
+        ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(0).toString());
         position.setPosition(77);
-        ui->textEdit_4->setTextCursor(position);
-        ui->textEdit_4->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
-        ui->textEdit_4->append(ui->dateEdit_3->text());
+        ui->textEditcontenucontrat->setTextCursor(position);
+        ui->textEditcontenucontrat->insertPlainText(" "+model->record(0).value(1).toString()+" "+model->record(0).value(2).toString());
+        ui->textEditcontenucontrat->append(ui->dateEditcontrat->text());
     }
 }
+
+

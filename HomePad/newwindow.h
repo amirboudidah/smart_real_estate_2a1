@@ -21,33 +21,33 @@ public:
 private slots:
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
-    void on_pushButton_27_clicked();
+    void on_pushButtonajoutcontrat_clicked();
 
-    void on_pushButton_30_clicked();
+    void on_supprimercontrat_clicked();
 
-    void on_lineEdit_11_textEdited(const QString &arg1);
+    void on_numcontrat_textEdited(const QString &arg1);
 
-    void on_pushButton_29_clicked();
+    void on_gomodifiercontrat_clicked();
 
-    void on_pushButton_19_clicked();
+    void on_buttonrefreshcontrat_clicked();
 
-    void on_comboBox_2_currentIndexChanged(int index);
+    void on_triercontrat_currentIndexChanged(int index);
 
-    void on_pushButton_28_clicked();
+    void on_pushButtonchoisirtemplatecontrat_clicked();
 
-    void on_pushButton_17_clicked();
+    void on_voirlerestecontrat_clicked();
 
-    void on_pushButton_16_clicked();
+    void on_exportercontrat_clicked();
 
-    void on_pushButton_26_clicked();
+    void on_recherchecontrat_textEdited(const QString &arg1);
 
-    void on_lineEdit_10_textEdited(const QString &arg1);
+    void on_pushButtonmodifiercontrat_clicked();
 
-    void on_pushButton_20_clicked();
+    void on_radioButtonachatcontrat_clicked();
 
-    void on_radioButton_5_clicked();
+    void on_radioButtoncontratvendre_clicked();
 
-    void on_radioButton_6_clicked();
+    void on_buttonanulcontrat_clicked();
 
 private:
     Ui::newWindow *ui;
