@@ -13,7 +13,7 @@ class Historique
       void save(QString,QString,QString);
       QString load();
       void save1(QString,QString,QString);
-      void save2(QString,QString,QString);
+      void save2(QString);
 };
 
 #endif // HISTORIQUE_H

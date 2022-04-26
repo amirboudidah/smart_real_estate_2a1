@@ -16,7 +16,6 @@
 #include "QFile"
 #include "QTextStream"
 #include "historique.h"
-#include "camera.h"
 #include <QCamera>
 #include <QCameraViewfinder>
 #include <QCameraImageCapture>
@@ -24,6 +23,8 @@
 #include <QMenu>
 #include <QAction>
 #include <QFileDialog>
+
+#include <arduino.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
    ui->emailcl->setValidator(new QRegExpValidator(  QRegExp("[a-z]{1,10}@[a-z]{1,4}\\.[a-z]{1,4}")  ));
    ui->nomcl->setValidator(new QRegExpValidator(  QRegExp("[A-z]*")  ));
    ui->prenomcl->setValidator(new QRegExpValidator(  QRegExp("[A-z]*")  ));
+
+
 
    mCamera= new QCamera (this);
    mCameraViewfinder = new QCameraViewfinder (this);
@@ -148,7 +151,7 @@ void MainWindow::on_pushButton_3_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
     Historique h;
-         h.save2("nomcl:"+ui->nomcl->text(),"prenomcl :"+ui->prenomcl->text(),"numtelcl:"+ui->numtelcl->text());
+         h.save2("cin:"+ui->sup->text());
     client c1; c1.setcin(ui->sup->text().toInt());
     bool test=c1.supprimer(c1.getcin());
     ui->tableView->setModel(c->afficher());
@@ -171,7 +174,7 @@ void MainWindow::on_pushButton_7_clicked()
   Historique h;
 h.load();
 h.load();
-QString link="C:/Users/user/Desktop/interfaceG_projet/his.txt";
+QString link="C:/Users/user/Desktop/HomePad - Copie/his.txt";
     QDesktopServices::openUrl(QUrl(link));
 }
 
@@ -179,7 +182,7 @@ void MainWindow::on_pushButton_4_clicked()
 {
     client c;
      c.genererPDF();
-     QString link="C:/Users/user/Desktop/interfaceG_projet/liste.pdf";
+     QString link="C:/Users/user/Desktop/HomePad - Copie/liste.pdf";
          QDesktopServices::openUrl(QUrl(link));
 }
 
@@ -193,3 +196,16 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->tableView->setModel(c->recherche(arg1));
 
 }
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QPrinter printer;
+    QPrintDialog dialog(&printer, this);
+    dialog.setWindowTitle("imprimer document");
+    if(ui->tableView->hasMouseTracking())
+        dialog.addEnabledOption(QAbstractPrintDialog::PrintSelection);
+    if(dialog.exec() != QDialog::Accepted)
+    { return;}
+
+}
+

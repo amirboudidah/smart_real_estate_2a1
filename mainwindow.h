@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include "client.h"
 #include <QMainWindow>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTcpSocket>
+
 
 namespace Ui {
 class MainWindow;
@@ -63,6 +67,10 @@ private slots:
 
  void on_lineEdit_textChanged(const QString &arg1);
 
+ void on_pushButton_8_clicked();
+
+ //void on_ok_clicked();
+
 private:
     Ui::MainWindow *ui;
     client *c;
@@ -74,6 +82,7 @@ private:
     QAction *mAllumerAction;
     QAction *mEteindreAction;
     QAction *mCapturerAction;
+
 
 };
 

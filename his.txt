@@ -56,10 +56,6 @@ nomcl:nnbjknkj
 prenomcl :hjjhhj
 numtelcl:54544554
  un nouveau client a etat ajouter le dimanche 03 avril 2022 19:07:12.623
-nomcl:
-prenomcl :
-numtelcl:
- ce client a etait supprimer le dimanche 03 avril 2022 19:08:28.197
 nomcl:driraaa
 prenomcl :amenii
 numtelcl:4454
@@ -68,18 +64,6 @@ nomcl:driraa
 prenomcl :uhiuh
 numtelcl:54545
  ce client a etait modifier le dimanche 03 avril 2022 19:10:16.400
-nomcl:
-prenomcl :
-numtelcl:
- un nouveau client a etat ajouter le dimanche 03 avril 2022 19:10:34.769
-nomcl:
-prenomcl :
-numtelcl:
- ce client a etait supprimer le dimanche 03 avril 2022 19:10:49.584
-nomcl:
-prenomcl :
-numtelcl:
- ce client a etait modifier le dimanche 03 avril 2022 19:12:23.885
 nomcl:khdijaa
 prenomcl :kjjkkn
 numtelcl:64615321
@@ -92,3 +76,34 @@ nomcl:jarraya
 prenomcl :mimi
 numtelcl:541545
  ce client a etait modifier le lundi 04 avril 2022 01:13:16.917
+nomcl:noo
+prenomcl :yess
+numtelcl:455454545
+ un nouveau client a etat ajouter le mardi 05 avril 2022 02:26:44.314
+nomcl:yess
+prenomcl :noo
+numtelcl:5454545
+ ce client a etait modifier le mardi 05 avril 2022 02:27:30.586
+nomcl:maryem
+prenomcl :dabbegh
+numtelcl:5845464
+ un nouveau client a etat ajouter le mardi 05 avril 2022 02:43:15.684
+cin:959595
+
+ ce client a etait supprimer le mardi 05 avril 2022 09:52:12.578
+cin:777
+ce client a etait supprimer le mardi 05 avril 2022 12:01:32.413
+nomcl:
+prenomcl :
+numtelcl:
+ un nouveau client a etat ajouter le samedi 23 avril 2022 18:26:49.132
+nomcl:
+prenomcl :
+numtelcl:
+ un nouveau client a etat ajouter le samedi 23 avril 2022 18:26:54.876
+cin:5596
+ce client a etait supprimer le samedi 23 avril 2022 18:27:44.004
+nomcl:hello
+prenomcl :hello
+numtelcl:848784464
+ ce client a etait modifier le samedi 23 avril 2022 18:29:12.873
