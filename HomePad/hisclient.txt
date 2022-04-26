@@ -1,0 +1,48 @@
+nomcl:azer
+prenomcl :azer
+numtelcl:1425875
+ un nouveau client a etat ajouter le dimanche 24 avril 2022 18:32:21.114
+nomcl:
+prenomcl :
+numtelcl:
+ un nouveau client a etat ajouter le dimanche 24 avril 2022 18:36:52.305
+nomcl:
+prenomcl :
+numtelcl:
+ un nouveau client a etat ajouter le dimanche 24 avril 2022 18:40:16.521
+cin:0
+ce client a etait supprimer le dimanche 24 avril 2022 18:40:38.825
+nomcl:
+prenomcl :
+numtelcl:
+ ce client a etait modifier le dimanche 24 avril 2022 18:41:27.426
+nomcl:azrrr
+prenomcl :arrrr
+numtelcl:sqdf
+ ce client a etait modifier le dimanche 24 avril 2022 18:41:55.553
+nomcl:
+prenomcl :
+numtelcl:
+ ce client a etait modifier le dimanche 24 avril 2022 18:47:20.146
+nomcl:
+prenomcl :
+numtelcl:
+ ce client a etait modifier le dimanche 24 avril 2022 19:12:33.399
+nomcl:
+prenomcl :
+numtelcl:
+ un nouveau client a etat ajouter le lundi 25 avril 2022 19:18:58.978
+cin:0
+ce client a etait supprimer le lundi 25 avril 2022 19:19:23.562
+nomcl:boudidah
+prenomcl :amir
+numtelcl:9032256
+ un nouveau client a etat ajouter le lundi 25 avril 2022 19:25:46.929
+nomcl:
+prenomcl :
+numtelcl:
+ ce client a etait modifier le lundi 25 avril 2022 19:27:44.115
+nomcl:
+prenomcl :
+numtelcl:
+ ce client a etait modifier le mardi 26 avril 2022 10:05:20.640
